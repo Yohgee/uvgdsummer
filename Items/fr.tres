@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FlightRegen" load_steps=2 format=3 uid="uid://eym4rinejuod"]
+
+[ext_resource type="Script" uid="uid://e2a2mnb1p0as" path="res://Items/regain_flight.gd" id="1_k6wd4"]
+
+[resource]
+script = ExtResource("1_k6wd4")
+regen_amt = 0.5
+metadata/_custom_type_script = "uid://e2a2mnb1p0as"
