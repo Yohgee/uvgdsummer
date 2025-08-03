@@ -1,13 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5ikuems7oqdn"]
+[gd_scene load_steps=4 format=3 uid="uid://c5ikuems7oqdn"]
 
 [ext_resource type="Script" uid="uid://dmuty65svxktj" path="res://bullet.gd" id="1_ktj6t"]
+[ext_resource type="Texture2D" uid="uid://d05ohm30hjogt" path="res://Art/moonbullet.png" id="2_m484p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ktj6t"]
+radius = 4.0
 
 [node name="Bullet" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_ktj6t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ktj6t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_m484p")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

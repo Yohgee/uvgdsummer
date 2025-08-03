@@ -1,6 +1,9 @@
 extends Resource
 class_name Item
 
+@export var name : String
+@export_multiline var desc : String
+
 func get_item(e : Entity):
 	pass
 

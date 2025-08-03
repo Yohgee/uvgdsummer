@@ -8,4 +8,6 @@ func get_item(e : Entity):
 
 func on_hit(a : Entity, t : Entity, dmg : float, proc : float):
 	if a is Player:
-		a.flight += regen_amt
+		var r := randf() * proc
+		if r >= 0.8:
+			a.flight += regen_amt

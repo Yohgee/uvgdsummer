@@ -1,10 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://v57cfg0brij1"]
+[gd_scene load_steps=9 format=3 uid="uid://v57cfg0brij1"]
 
 [ext_resource type="Script" uid="uid://bfnpbesmeqbfv" path="res://player.gd" id="1_y0qk3"]
 [ext_resource type="Texture2D" uid="uid://chxu3t572ajsp" path="res://Art/player.png" id="2_3y5cq"]
-[ext_resource type="Script" uid="uid://cxa12ftuo1c3c" path="res://Items/item.gd" id="2_f7am4"]
 [ext_resource type="Texture2D" uid="uid://bki46yucql7od" path="res://Art/flightbarunder.png" id="3_0ad8t"]
-[ext_resource type="Resource" uid="uid://eym4rinejuod" path="res://Items/fr.tres" id="3_3n8j0"]
 [ext_resource type="Script" uid="uid://nu1k5evfacry" path="res://Objects/player_ui.gd" id="3_x20fu"]
 [ext_resource type="Texture2D" uid="uid://c7edw1kgpwnjg" path="res://Art/flightbarprog.png" id="4_x20fu"]
 [ext_resource type="Texture2D" uid="uid://diqxysr8qrq5b" path="res://Art/healthbarprog.png" id="5_0ar0x"]
@@ -17,7 +15,6 @@ size = Vector2(12, 13)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_y0qk3")
-items = Array[ExtResource("2_f7am4")]([ExtResource("3_3n8j0")])
 metadata/_custom_type_script = "uid://pfrh7u2ltx2"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

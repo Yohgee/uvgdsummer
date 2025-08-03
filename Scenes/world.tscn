@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://v57cfg0brij1" path="res://Objects/player.tscn" id="1_a02cp"]
 [ext_resource type="Texture2D" uid="uid://c3w75tdjq2ddj" path="res://icon.svg" id="2_go701"]
-[ext_resource type="PackedScene" uid="uid://bk1j2arxqtme1" path="res://Objects/entity.tscn" id="3_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://5ta0amf11so" path="res://Enemies/enemy.tscn" id="4_8j60k"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yp4wr"]
 
@@ -14,7 +14,7 @@ collision_mask = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("WorldBoundaryShape2D_yp4wr")
 
-[node name="Player" parent="." instance=ExtResource("1_a02cp")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_a02cp")]
 position = Vector2(-1, -74)
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -22,9 +22,5 @@ position = Vector2(32, 77)
 scale = Vector2(8.63281, 1)
 texture = ExtResource("2_go701")
 
-[node name="Entity" parent="." instance=ExtResource("3_5a7ea")]
-position = Vector2(165, -64)
-
-[node name="Sprite2D" type="Sprite2D" parent="Entity"]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("2_go701")
+[node name="Enemy" parent="." instance=ExtResource("4_8j60k")]
+position = Vector2(255, -120)

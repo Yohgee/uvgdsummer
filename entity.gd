@@ -1,7 +1,12 @@
 extends CharacterBody2D
 class_name Entity
 
+const DAMAGE_NUM = preload("res://Objects/damage_num.tscn")
+const DEATHPARTICLES = preload("res://Objects/deathparticles.tscn")
 signal on_hit(attacker : Entity, target : Entity, damage : float, proc : float)
+signal on_damage(attacker : Entity, target : Entity, damage : float, proc : float)
+signal on_death(attacker : Entity, target : Entity, damage : float, proc : float)
+signal on_kill(attacker : Entity, target : Entity, damage : float, proc : float)
 @export var items : Array[Item] = []
 @export var base_speed := 200
 @export var max_health := 100: set = set_max_health
@@ -31,3 +36,20 @@ func set_max_health(nv):
 
 func get_hit(target : Entity, damage : float, proc : float):
 	on_hit.emit(self, target, damage, proc)
+
+func take_damage(attacker : Entity, damage : float, proc : float):
+	health -= damage
+	on_damage.emit(attacker, self, damage, proc)
+	if health <= 0:
+		attacker.get_kill(self, damage, proc)
+		die(attacker, damage, proc)
+
+func get_kill(target : Entity, damage : float, proc : float):
+	on_kill.emit(self, target, damage, proc)
+
+func die(attacker : Entity, damage : float, proc : float):
+	on_death.emit(attacker, self, damage, proc)
+	var dp = DEATHPARTICLES.instantiate()
+	get_tree().current_scene.add_child(dp)
+	dp.global_position = global_position
+	queue_free()

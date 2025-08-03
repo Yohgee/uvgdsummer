@@ -11,7 +11,8 @@ var velocity : Vector2 = Vector2.ZERO
 var shooter : Entity
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	if !body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
 
 func _process(delta: float) -> void:
 	position += velocity * delta
@@ -22,11 +23,12 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print(body)
 	if body == shooter: 
 		return
 	
 	if body.collision_layer == 2 and body is Entity:
+		body = body as Entity
 		hit.emit(body, damage, proc)
+		body.take_damage(shooter, damage, proc)
 	
 	queue_free()

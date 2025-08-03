@@ -27,7 +27,7 @@ var attack_speed_mult : float = 1.0:
 		attack_speed_mult = clamp(nv, 0.01, 999)
 		attack_timer.wait_time = base_attack_speed * attack_speed_mult
 
-var bullet_speed : float = 300
+var bullet_speed : float = 450
 
 var can_attack := true
 
@@ -58,6 +58,7 @@ func _physics_process(delta: float) -> void:
 		attack_timer.start()
 		spawn_bullet()
 	
+	
 	move_and_slide()
 
 func set_health(nv):
@@ -72,7 +73,7 @@ func spawn_bullet():
 	var angle := get_angle_to(get_global_mouse_position())
 	var offset := Vector2(16, 0).rotated(angle)
 	var bullet : Bullet = PLAYER_BULLET.instantiate()
-	get_parent().add_child(bullet)
+	get_tree().current_scene.add_child(bullet)
 	bullet.shooter = self
 	bullet.global_position = global_position + offset
 	bullet.velocity = Vector2(bullet_speed, 0).rotated(angle)
