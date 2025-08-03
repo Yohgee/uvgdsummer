@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://vw35bjfj8jvw"]
+
+[ext_resource type="Script" uid="uid://ckwfyt5tuuuen" path="res://Shooters/spiral_shooter.gd" id="1_j3u36"]
+
+[node name="SpiralShooter" type="Node2D"]
+script = ExtResource("1_j3u36")
+metadata/_custom_type_script = "uid://d4ngtdediwo85"

@@ -20,7 +20,6 @@ func _ready() -> void:
 		get_item(items.pop_front())
 
 func get_item(i : Item):
-	print(i)
 	i.get_item(self)
 	items.append(i)
 
@@ -41,7 +40,8 @@ func take_damage(attacker : Entity, damage : float, proc : float):
 	health -= damage
 	on_damage.emit(attacker, self, damage, proc)
 	if health <= 0:
-		attacker.get_kill(self, damage, proc)
+		if attacker:
+			attacker.get_kill(self, damage, proc)
 		die(attacker, damage, proc)
 
 func get_kill(target : Entity, damage : float, proc : float):

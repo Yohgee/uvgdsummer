@@ -7,8 +7,11 @@ class_name ShooterRes
 @export var start_delay : float
 @export var spawn_delay : float
 @export var velocity : Vector2
+@export var acceleration : Vector2
+@export var fix_accel : bool = false
 @export var offset : Vector2
 @export var aimed : bool = false
+@export var num_shots : int = -1
 @export var carry_node : PackedScene
 @export var carry_res : Resource
 
@@ -19,7 +22,10 @@ func apply(s : Shooter):
 	s.start_delay = start_delay
 	s.spawn_delay = spawn_delay
 	s.velocity = velocity
+	s.acceleration = acceleration
+	s.fix_accel = fix_accel
 	s.offset = offset
 	s.aimed = aimed
+	s.num_shots = num_shots
 	s.carry_node = carry_node
 	s.carry_res = carry_res
