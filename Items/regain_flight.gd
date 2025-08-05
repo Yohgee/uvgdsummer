@@ -5,7 +5,7 @@ class_name FlightRegen
 
 func get_item(e : Entity):
 	super.get_item(e)
-	if stack <= 0:
+	if !e.on_hit.is_connected(on_hit):
 		e.on_hit.connect(on_hit)
 
 func on_hit(a : Entity, t : Entity, dmg : float, proc : float):

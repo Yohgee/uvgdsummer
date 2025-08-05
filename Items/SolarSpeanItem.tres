@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SolarSpear" load_steps=3 format=3 uid="uid://bv7ta34578v6l"]
+
+[ext_resource type="Script" uid="uid://s5uandigb1xr" path="res://Items/SolarSpear.gd" id="1_pic5w"]
+[ext_resource type="Texture2D" uid="uid://4osgblkhiunr" path="res://Art/items/solarspear.png" id="2_b3lmn"]
+
+[resource]
+script = ExtResource("1_pic5w")
+name = "Solar Spear"
+desc = "10% (+2% per stack) chance on hit to shoot a "
+texture = ExtResource("2_b3lmn")
+metadata/_custom_type_script = "uid://s5uandigb1xr"

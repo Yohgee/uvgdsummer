@@ -80,8 +80,13 @@ func get_item(i : Item):
 	item_display.add_item_to_q(i)
 
 func set_health(nv):
+	var d : float = health - nv
 	health = clamp(nv, 0, max_health)
 	ui.health_bar.value = health
+	var dn = DAMAGE_NUM.instantiate()
+	dn.damage = d
+	get_parent().call_deferred("add_child", dn)
+	dn.global_position = global_position + Vector2(randf_range(-16, 16), -10 + randf_range(-8, 8))
 
 func set_max_health(nv):
 	max_health = nv
@@ -94,7 +99,6 @@ func spawn_bullet(b : PackedScene):
 	get_tree().current_scene.add_child(bullet)
 	bullet.shooter = self
 	bullet.pierce = bullet_pierce
-	print(bullet_pierce)
 	bullet.global_position = global_position + offset
 	bullet.velocity = Vector2(bullet_speed, 0).rotated(angle)
 	bullet.hit.connect(get_hit)

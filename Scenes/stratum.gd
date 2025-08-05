@@ -4,6 +4,8 @@ class_name Stratum
 @export var level : int = 0
 @export var level_name : String = "Foundation"
 
+@export_category("Level Generation")
+
 @export var room_width : int = 1280
 @export var room_height : int = 720
 @export var rooms : Array[PackedScene]
@@ -13,10 +15,22 @@ class_name Stratum
 
 @export var border_colour : Color = Color.ALICE_BLUE
 
+@export_category("Enemy Spawning")
+
+@export var sun_enemies : Array[PackedScene]
+@export var sun_credits : Array[int]
+@export var moon_enemies : Array[PackedScene]
+@export var moon_credits : Array[int]
+
 @onready var right: StaticBody2D = $Right
 @onready var border: Line2D = $Border
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var name_label: Label = $CanvasLayer/Control/NameLabel
+
+var spawn_credits : int = 30
+var wave_timer : Timer
+var max_wave_time : float = 7
+var min_wave_time : float = 4
 
 func _ready() -> void:
 	name_label.text = "Stratum " + str(level) + ": " + level_name
@@ -45,7 +59,14 @@ func _ready() -> void:
 		pos.x -= room_width * stratum_width
 		pos.y -= room_height
 	
+	wave_timer.start()
 	animation_player.play("name_fade")
+
+func _process(delta: float) -> void:
+	pass
+
+func spawn_wave():
+	pass
 
 func cleanse():
 	for c in get_children():
