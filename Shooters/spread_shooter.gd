@@ -36,6 +36,7 @@ func shoot():
 		
 		get_tree().current_scene.add_child(node)
 		node.global_position = global_position + offset.rotated(rotation)
+		node.rotation = rotation
 		
 		rotation_degrees += dr
 	rotation = i_rot

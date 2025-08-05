@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1t5c22a23dnv"]
+
+[ext_resource type="Script" uid="uid://dnp572suufbfy" path="res://Scenes/stratum.gd" id="1_70l7v"]
+[ext_resource type="PackedScene" uid="uid://dnymaathjos8a" path="res://Rooms/s0r0.tscn" id="2_5lqo3"]
+[ext_resource type="PackedScene" uid="uid://cldw8o383qkp" path="res://Rooms/s0r1.tscn" id="3_os1pn"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ukwj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ndda"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_df4gb"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="Animation" id="Animation_df4gb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/NameLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6ndda"]
+resource_name = "name_fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/NameLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_df4gb"]
+_data = {
+&"RESET": SubResource("Animation_df4gb"),
+&"name_fade": SubResource("Animation_6ndda")
+}
+
+[node name="Stratum" type="Node2D"]
+modulate = Color(0.838862, 0.717954, 0.652417, 1)
+script = ExtResource("1_70l7v")
+level = 1
+level_name = "Dwellings"
+rooms = Array[PackedScene]([ExtResource("2_5lqo3"), ExtResource("2_5lqo3"), ExtResource("2_5lqo3"), ExtResource("3_os1pn"), ExtResource("3_os1pn"), ExtResource("3_os1pn")])
+
+[node name="Base" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base"]
+shape = SubResource("WorldBoundaryShape2D_3ukwj")
+
+[node name="Left" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+shape = SubResource("WorldBoundaryShape2D_6ndda")
+
+[node name="Right" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+shape = SubResource("WorldBoundaryShape2D_df4gb")
+
+[node name="Border" type="Line2D" parent="."]
+width = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_df4gb")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 42
+text = "Stratum 0: Level Name"
+horizontal_alignment = 1

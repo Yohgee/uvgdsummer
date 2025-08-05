@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PoolSet" load_steps=6 format=3 uid="uid://cgepdqldd3icl"]
+
+[ext_resource type="Script" uid="uid://dlbgqgtalmu1i" path="res://Items/item_pool.gd" id="1_ai3n1"]
+[ext_resource type="Script" uid="uid://crjy1ln2kvdwa" path="res://Items/pool_set.gd" id="2_2yxhy"]
+[ext_resource type="Resource" uid="uid://fq4ye61425ly" path="res://Items/CommonItems.tres" id="2_l5hta"]
+[ext_resource type="Resource" uid="uid://dyc20xinl05nf" path="res://Items/UnCommonItems.tres" id="3_qkaru"]
+[ext_resource type="Resource" uid="uid://fr0k36a1ow5c" path="res://Items/RareItems.tres" id="4_5ddq2"]
+
+[resource]
+script = ExtResource("2_2yxhy")
+pools = Array[ExtResource("1_ai3n1")]([ExtResource("2_l5hta"), ExtResource("3_qkaru"), ExtResource("4_5ddq2")])
+chances = Array[float]([0.7, 0.25, 0.05])
+metadata/_custom_type_script = "uid://crjy1ln2kvdwa"

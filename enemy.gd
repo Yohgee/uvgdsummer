@@ -2,6 +2,7 @@ extends Entity
 class_name Enemy
 
 @export var hp_bar : TextureProgressBar
+@export var di : DropItem
 
 func set_health(nv):
 	var d : float = health - nv
@@ -17,4 +18,6 @@ func set_health(nv):
 func die(attacker : Entity, damage : float, proc : float):
 	if attacker is Player:
 		print("hi")
+	if di:
+		di.drop_item()
 	super.die(attacker, damage, proc)

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemPool" load_steps=6 format=3 uid="uid://fr0k36a1ow5c"]
+
+[ext_resource type="Script" uid="uid://cxa12ftuo1c3c" path="res://Items/item.gd" id="1_ubojq"]
+[ext_resource type="Script" uid="uid://cc7h2qermkc1l" path="res://Items/eclipsestone.gd" id="4_jpcmn"]
+[ext_resource type="Texture2D" uid="uid://c653kaujulhof" path="res://Art/items/ceslestialstones.png" id="5_jqdjq"]
+[ext_resource type="Script" uid="uid://dlbgqgtalmu1i" path="res://Items/item_pool.gd" id="6_u3nf4"]
+
+[sub_resource type="Resource" id="Resource_npeqg"]
+script = ExtResource("4_jpcmn")
+name = "Celestial Stones"
+desc = "1% (+1% per stack) chance on kill to start an Eclipse."
+texture = ExtResource("5_jqdjq")
+metadata/_custom_type_script = "uid://cc7h2qermkc1l"
+
+[resource]
+script = ExtResource("6_u3nf4")
+item_pool = Array[ExtResource("1_ubojq")]([SubResource("Resource_npeqg")])
+metadata/_custom_type_script = "uid://dlbgqgtalmu1i"

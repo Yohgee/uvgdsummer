@@ -3,10 +3,14 @@ class_name Player
 
 const MAX_FALL = 400
 const PLAYER_BULLET = preload("res://Objects/player_bullet.tscn")
+const PLAYER_NIGHT_BULLET = preload("res://Objects/player_night_bullet.tscn")
 
 @onready var ui: PlayerUI = $player_ui_layer/ui
 @onready var wand_spr: Sprite2D = $wand
 @onready var attack_timer: Timer = $AttackTimer
+@onready var night_attack_timer: Timer = $NightAttackTimer
+@onready var item_display: ItemDisplay = $player_ui_layer/ui/ItemDisplay
+@onready var nightwand_spr: Sprite2D = $nightwand
 
 @export var max_flight := 1.5:
 	set(nv):
@@ -19,17 +23,20 @@ const PLAYER_BULLET = preload("res://Objects/player_bullet.tscn")
 		ui.flight_bar.value = flight
 
 var gravity = 980
-var flight_speed : float = 100
+var flight_speed : float = 125
 var flight_recharge_mult := 2
 var base_attack_speed : float = 0.3
 var attack_speed_mult : float = 1.0:
 	set(nv):
 		attack_speed_mult = clamp(nv, 0.01, 999)
 		attack_timer.wait_time = base_attack_speed * attack_speed_mult
+		night_attack_timer.wait_time = base_attack_speed * 0.5 * attack_speed_mult 
 
 var bullet_speed : float = 450
+var bullet_pierce : int = 1
 
 var can_attack := true
+var can_attack_night := true
 
 func _ready() -> void:
 	super._ready()
@@ -40,6 +47,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = (Input.get_action_strength("right") - Input.get_action_strength("left")) * base_speed * speed_multiplier
 	
 	wand_spr.look_at(get_global_mouse_position())
+	nightwand_spr.look_at(get_global_mouse_position())
 	
 	if !is_on_floor():
 		velocity.y = clamp(velocity.y + gravity * delta, velocity.y, MAX_FALL)
@@ -52,14 +60,24 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -flight_speed
 		flight -= delta
 		
-	if Input.is_action_pressed("primary") and can_attack:
-		can_attack = false
-		wand_spr.show()
-		attack_timer.start()
-		spawn_bullet()
+	if Input.is_action_pressed("primary"):
+		if WorldTime.get_sun() and can_attack:
+			can_attack = false
+			wand_spr.show()
+			attack_timer.start()
+			spawn_bullet(PLAYER_BULLET)
+		if WorldTime.get_moon() and can_attack_night:
+			can_attack_night = false
+			nightwand_spr.show()
+			night_attack_timer.start()
+			spawn_bullet(PLAYER_NIGHT_BULLET)
 	
 	
 	move_and_slide()
+
+func get_item(i : Item):
+	super.get_item(i)
+	item_display.add_item_to_q(i)
 
 func set_health(nv):
 	health = clamp(nv, 0, max_health)
@@ -69,12 +87,14 @@ func set_max_health(nv):
 	max_health = nv
 	ui.health_bar.max_value = max_health
 
-func spawn_bullet():
+func spawn_bullet(b : PackedScene):
 	var angle := get_angle_to(get_global_mouse_position())
 	var offset := Vector2(16, 0).rotated(angle)
-	var bullet : Bullet = PLAYER_BULLET.instantiate()
+	var bullet : Bullet = b.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.shooter = self
+	bullet.pierce = bullet_pierce
+	print(bullet_pierce)
 	bullet.global_position = global_position + offset
 	bullet.velocity = Vector2(bullet_speed, 0).rotated(angle)
 	bullet.hit.connect(get_hit)
@@ -82,3 +102,8 @@ func spawn_bullet():
 func _on_attack_timer_timeout() -> void:
 	can_attack = true
 	wand_spr.hide()
+
+
+func _on_night_attack_timer_timeout() -> void:
+	can_attack_night = true
+	nightwand_spr.hide()

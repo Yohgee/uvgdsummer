@@ -1,0 +1,116 @@
+[gd_scene load_steps=22 format=3 uid="uid://b6h6g5i3us7a2"]
+
+[ext_resource type="Script" uid="uid://pg04uubvmxy6" path="res://enemy.gd" id="1_ko8xe"]
+[ext_resource type="Texture2D" uid="uid://vckjbkvlf3la" path="res://Art/lunarbat2.png" id="2_bdue4"]
+[ext_resource type="Texture2D" uid="uid://bcwbsln0qvyne" path="res://Art/enemybarund.png" id="3_4l61o"]
+[ext_resource type="Texture2D" uid="uid://dttl0hhgdt5gc" path="res://Art/enemybarprog.png" id="4_bdue4"]
+[ext_resource type="Script" uid="uid://cwmq5xi11tvhm" path="res://Enemies/fly_movement.gd" id="5_4pjc8"]
+[ext_resource type="PackedScene" uid="uid://bptlwpb18i373" path="res://Shooters/spread_shooter.tscn" id="6_ko8xe"]
+[ext_resource type="PackedScene" uid="uid://bpryymutquy6e" path="res://Shooters/shooter.tscn" id="6_q8wgv"]
+[ext_resource type="PackedScene" uid="uid://c5ikuems7oqdn" path="res://Objects/bullet.tscn" id="7_ipuf6"]
+[ext_resource type="Script" uid="uid://dffyrkj5y36t5" path="res://Shooters/bullet_res.gd" id="8_vccpv"]
+[ext_resource type="PackedScene" uid="uid://vw35bjfj8jvw" path="res://Shooters/spiral_shooter.tscn" id="10_4l61o"]
+[ext_resource type="Script" uid="uid://dpdt6ppa2hdxk" path="res://Shooters/spiral_shooter_res.gd" id="11_bdue4"]
+[ext_resource type="Script" uid="uid://c0s05wxd5ynwn" path="res://Objects/drop_item.gd" id="12_vccpv"]
+[ext_resource type="Script" uid="uid://dlbgqgtalmu1i" path="res://Items/item_pool.gd" id="13_j1crw"]
+[ext_resource type="Resource" uid="uid://fq4ye61425ly" path="res://Items/CommonItems.tres" id="14_j1crw"]
+[ext_resource type="Resource" uid="uid://dyc20xinl05nf" path="res://Items/UnCommonItems.tres" id="14_w00fm"]
+[ext_resource type="Script" uid="uid://crjy1ln2kvdwa" path="res://Items/pool_set.gd" id="15_txuyj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47qgu"]
+size = Vector2(32, 30)
+
+[sub_resource type="Resource" id="Resource_o35rc"]
+script = ExtResource("8_vccpv")
+damage = 10.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(250, 0)
+acceleration = Vector2(0, 0)
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_4pjc8"]
+script = ExtResource("8_vccpv")
+damage = 5.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(150, 0)
+acceleration = Vector2(0, 0)
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_q8wgv"]
+script = ExtResource("11_bdue4")
+rot_per_shot = 30.0
+spawn_node = ExtResource("7_ipuf6")
+spawn_res = SubResource("Resource_4pjc8")
+start_delay = 0.0
+spawn_delay = 0.02
+velocity = Vector2(0, 0)
+acceleration = Vector2(0, 0)
+fix_accel = false
+offset = Vector2(0, 0)
+aimed = false
+num_shots = 12
+metadata/_custom_type_script = "uid://dpdt6ppa2hdxk"
+
+[sub_resource type="Resource" id="Resource_c5qu3"]
+script = ExtResource("15_txuyj")
+pools = Array[ExtResource("13_j1crw")]([ExtResource("14_j1crw"), ExtResource("14_w00fm")])
+chances = Array[float]([0.15, 0.05])
+metadata/_custom_type_script = "uid://crjy1ln2kvdwa"
+
+[node name="Greater" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "di")]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_ko8xe")
+hp_bar = NodePath("HealthBar")
+di = NodePath("DropItem")
+metadata/_custom_type_script = "uid://pfrh7u2ltx2"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bdue4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_47qgu")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("3_4l61o")
+texture_progress = ExtResource("4_bdue4")
+
+[node name="FlyMovement" type="Node2D" parent="." node_paths=PackedStringArray("entity", "shooters")]
+script = ExtResource("5_4pjc8")
+entity = NodePath("..")
+shooters = [NodePath("SpreadShooter"), NodePath("Shooter")]
+
+[node name="SpreadShooter" parent="FlyMovement" node_paths=PackedStringArray("shooter") instance=ExtResource("6_ko8xe")]
+spawn_node = ExtResource("7_ipuf6")
+spawn_res = SubResource("Resource_o35rc")
+shooter = NodePath("../..")
+spawn_delay = 1.0
+aimed = true
+
+[node name="Shooter" parent="FlyMovement" node_paths=PackedStringArray("shooter") instance=ExtResource("6_q8wgv")]
+spawn_node = ExtResource("10_4l61o")
+spawn_res = SubResource("Resource_q8wgv")
+shooter = NodePath("../..")
+spawn_delay = 5.0
+
+[node name="DropItem" type="Node2D" parent="."]
+script = ExtResource("12_vccpv")
+pool_set = SubResource("Resource_c5qu3")
+metadata/_custom_type_script = "uid://c0s05wxd5ynwn"

@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://bn5eej07gt80t"]
+
+[ext_resource type="Script" uid="uid://pg04uubvmxy6" path="res://enemy.gd" id="1_6a325"]
+[ext_resource type="Texture2D" uid="uid://d24kv6tv4vpq8" path="res://Art/lunarbat.png" id="2_o0jgr"]
+[ext_resource type="Texture2D" uid="uid://bcwbsln0qvyne" path="res://Art/enemybarund.png" id="3_ywhcy"]
+[ext_resource type="Texture2D" uid="uid://dttl0hhgdt5gc" path="res://Art/enemybarprog.png" id="4_un58v"]
+[ext_resource type="Script" uid="uid://cwmq5xi11tvhm" path="res://Enemies/fly_movement.gd" id="5_o0jgr"]
+[ext_resource type="PackedScene" uid="uid://bpryymutquy6e" path="res://Shooters/shooter.tscn" id="6_ywhcy"]
+[ext_resource type="PackedScene" uid="uid://c5ikuems7oqdn" path="res://Objects/bullet.tscn" id="7_h7yqj"]
+[ext_resource type="Script" uid="uid://dffyrkj5y36t5" path="res://Shooters/bullet_res.gd" id="8_vtil3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47qgu"]
+size = Vector2(32, 30)
+
+[sub_resource type="Resource" id="Resource_7a6u2"]
+script = ExtResource("8_vtil3")
+damage = 10.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(200, 0)
+acceleration = Vector2(0, 0)
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[node name="Moonfly" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar")]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_6a325")
+hp_bar = NodePath("HealthBar")
+metadata/_custom_type_script = "uid://pfrh7u2ltx2"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_o0jgr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_47qgu")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("3_ywhcy")
+texture_progress = ExtResource("4_un58v")
+
+[node name="FlyMovement" type="Node2D" parent="." node_paths=PackedStringArray("entity", "shooters")]
+script = ExtResource("5_o0jgr")
+entity = NodePath("..")
+shooters = [NodePath("Shooter")]
+
+[node name="Shooter" parent="FlyMovement" node_paths=PackedStringArray("shooter") instance=ExtResource("6_ywhcy")]
+spawn_node = ExtResource("7_h7yqj")
+spawn_res = SubResource("Resource_7a6u2")
+shooter = NodePath("../..")
+start_delay = 0.1
+spawn_delay = 1.0
+aimed = true

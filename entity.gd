@@ -20,12 +20,23 @@ func _ready() -> void:
 		get_item(items.pop_front())
 
 func get_item(i : Item):
+	for t in items:
+		if t.name == i.name:
+			t.get_item(self)
+			return
 	i.get_item(self)
 	items.append(i)
 
 func remove_item(i : Item):
+	for t in items:
+		if t.name == i.name:
+			t.remove_item(self)
+			if t.stack <= 0:
+				items.erase(i)
+			return
 	i.remove_item(self)
-	items.erase(i)
+	if i.stack <= 0:
+		items.erase(i)
 
 func set_health(nv):
 	health = clamp(nv, 0, max_health)

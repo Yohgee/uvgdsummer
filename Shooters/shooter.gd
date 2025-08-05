@@ -2,7 +2,7 @@ extends Node2D
 class_name Shooter
 
 @export var spawn_node : PackedScene
-@export var spawn_res : Resource
+@export var spawn_res : BHRes
 @export var shooter : Entity
 @export var start_delay : float
 @export var spawn_delay : float
@@ -13,7 +13,7 @@ class_name Shooter
 @export var aimed : bool = false
 @export var num_shots : int = -1
 @export var carry_node : PackedScene
-@export var carry_res : Resource
+@export var carry_res : BHRes
 
 var timer : Timer
 var carry : Node2D
@@ -65,6 +65,7 @@ func shoot():
 	
 	get_tree().current_scene.add_child(node)
 	node.global_position = global_position + offset.rotated(rotation)
+	node.rotation = rotation
 	if num_shots == -1: return
 	num_shots -= 1
 	if num_shots <=0:

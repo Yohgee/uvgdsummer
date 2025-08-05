@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemPool" load_steps=9 format=3 uid="uid://dyc20xinl05nf"]
+
+[ext_resource type="Script" uid="uid://cxa12ftuo1c3c" path="res://Items/item.gd" id="1_tm4yd"]
+[ext_resource type="Script" uid="uid://e2a2mnb1p0as" path="res://Items/regain_flight.gd" id="2_tua7p"]
+[ext_resource type="Texture2D" uid="uid://4x3mu41v3st7" path="res://Art/items/wingedeye.png" id="3_fhdcy"]
+[ext_resource type="Script" uid="uid://dveo3mqf0r3i3" path="res://Items/property_changer.gd" id="4_074f2"]
+[ext_resource type="Texture2D" uid="uid://bjtcc7bwm3021" path="res://Art/items/manafocus.png" id="5_tm4yd"]
+[ext_resource type="Script" uid="uid://dlbgqgtalmu1i" path="res://Items/item_pool.gd" id="6_mvtqa"]
+
+[sub_resource type="Resource" id="Resource_fhdcy"]
+script = ExtResource("2_tua7p")
+regen_amt = 0.3
+name = "Winged Eye"
+desc = "15% (+10% per stack) chance on hit to regain 0.3 (+0.2 per stack)  flight."
+texture = ExtResource("3_fhdcy")
+metadata/_custom_type_script = "uid://e2a2mnb1p0as"
+
+[sub_resource type="Resource" id="Resource_tm4yd"]
+script = ExtResource("4_074f2")
+value = 1.0
+property = "bullet_pierce"
+name = "Mana Focus"
+desc = "Your spells now pierce enemies (+1 enemy per stack)."
+texture = ExtResource("5_tm4yd")
+metadata/_custom_type_script = "uid://dveo3mqf0r3i3"
+
+[resource]
+script = ExtResource("6_mvtqa")
+item_pool = Array[ExtResource("1_tm4yd")]([SubResource("Resource_fhdcy"), SubResource("Resource_tm4yd")])
+metadata/_custom_type_script = "uid://dlbgqgtalmu1i"

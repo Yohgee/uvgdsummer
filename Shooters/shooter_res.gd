@@ -1,8 +1,8 @@
-extends Resource
+extends BHRes
 class_name ShooterRes
 
 @export var spawn_node : PackedScene
-@export var spawn_res : Resource
+@export var spawn_res : BHRes
 #i dont think i need ts anyweays @export var shooter : Entity
 @export var start_delay : float
 @export var spawn_delay : float
@@ -13,7 +13,7 @@ class_name ShooterRes
 @export var aimed : bool = false
 @export var num_shots : int = -1
 @export var carry_node : PackedScene
-@export var carry_res : Resource
+@export var carry_res : BHRes
 
 #this is the best possible way to do this dont question it
 func apply(s : Shooter):

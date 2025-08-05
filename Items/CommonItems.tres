@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemPool" load_steps=6 format=3 uid="uid://fq4ye61425ly"]
+
+[ext_resource type="Script" uid="uid://cxa12ftuo1c3c" path="res://Items/item.gd" id="1_aslbr"]
+[ext_resource type="Script" uid="uid://dug7flalotkqs" path="res://Items/move_speed.gd" id="2_c1wbn"]
+[ext_resource type="Script" uid="uid://dlbgqgtalmu1i" path="res://Items/item_pool.gd" id="2_obhoe"]
+[ext_resource type="Texture2D" uid="uid://b208ey36mifp3" path="res://Art/items/eclipsetreads.png" id="3_5ew7a"]
+
+[sub_resource type="Resource" id="Resource_saf36"]
+script = ExtResource("2_c1wbn")
+speed = 0.1
+name = "Eclipse Treads"
+desc = "Run 10% faster (+ 10% per stack) in both sun and moon."
+texture = ExtResource("3_5ew7a")
+metadata/_custom_type_script = "uid://dug7flalotkqs"
+
+[resource]
+script = ExtResource("2_obhoe")
+item_pool = Array[ExtResource("1_aslbr")]([SubResource("Resource_saf36")])
+metadata/_custom_type_script = "uid://dlbgqgtalmu1i"

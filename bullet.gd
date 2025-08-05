@@ -6,6 +6,7 @@ signal hit(target : Entity, dmg : float, procc : float)
 @export var damage : float = 10
 @export var proc : float = 1.0
 @export var lifetime : float = 10
+@export var pierce : int = 1
 
 var velocity : Vector2 = Vector2.ZERO
 var acceleration : Vector2 = Vector2.ZERO
@@ -20,7 +21,6 @@ func _process(delta: float) -> void:
 	velocity += acceleration * delta
 	lifetime -= delta
 	if lifetime <= 0:
-		print(lifetime)
 		queue_free()
 
 
@@ -29,11 +29,18 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	
 	if body.collision_layer == 2 and body is Entity:
+		if shooter:
+			if shooter is not Player and body is not Player: return
+		else:
+			if body is not Player: return
+		
 		body = body as Entity
 		hit.emit(body, damage, proc)
 		if shooter:
 			body.take_damage(shooter, damage, proc)
 		else:
 			body.take_damage(null, damage, proc)
+		pierce -= 1
+		if pierce > 0: return
 	
 	queue_free()

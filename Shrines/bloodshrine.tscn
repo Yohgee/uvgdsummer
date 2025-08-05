@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgolipxu0oc7s"]
+
+[ext_resource type="Script" uid="uid://di24gbtq4oaw0" path="res://Shrines/shrine.gd" id="1_n8q17"]
+[ext_resource type="Texture2D" uid="uid://cg2pf4nxmirqq" path="res://Art/bloodshrine.png" id="2_n8q17"]
+[ext_resource type="Script" uid="uid://crojq3mp2mtni" path="res://Shrines/blood_interact.gd" id="3_w8mht"]
+[ext_resource type="Script" uid="uid://c0s05wxd5ynwn" path="res://Objects/drop_item.gd" id="5_fhcj0"]
+[ext_resource type="Resource" uid="uid://cgepdqldd3icl" path="res://Items/DefaultPools.tres" id="5_lmxxb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1whm6"]
+size = Vector2(32, 60)
+
+[node name="Shrine" type="Area2D" node_paths=PackedStringArray("interact_component")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_n8q17")
+interact_component = NodePath("BloodInteract")
+text = "Sacrifice Flesh? (-hp)"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -30)
+shape = SubResource("RectangleShape2D_1whm6")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(0, -2)
+texture = ExtResource("2_n8q17")
+
+[node name="FlavourText" type="Label" parent="CollisionShape2D"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = -36.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Open"
+horizontal_alignment = 1
+
+[node name="BloodInteract" type="Node2D" parent="." node_paths=PackedStringArray("di")]
+script = ExtResource("3_w8mht")
+di = NodePath("DropItem")
+
+[node name="DropItem" type="Node2D" parent="BloodInteract"]
+script = ExtResource("5_fhcj0")
+pool_set = ExtResource("5_lmxxb")

@@ -15,8 +15,14 @@ run/main_scene="uid://cuvpnywj3k8dn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+WorldTime="*res://Objects/world_time.gd"
+
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
