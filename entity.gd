@@ -22,12 +22,12 @@ func _ready() -> void:
 		get_item(items.pop_front())
 
 func get_item(i : Item):
-	print(i)
+	#if i.status_effect:
 	i = i.duplicate()
 	for t in items:
 		if t.name == i.name:
 			t.get_item(self)
-			return
+			return t
 	i.get_item(self)
 	if !i.status_effect:
 		items.append(i)
@@ -36,9 +36,10 @@ func get_item(i : Item):
 			if t.name == i.name:
 				t.get_item(self)
 				update_status_effects(t, true)
-				return
+				return t
 		status_effects.append(i)
 		update_status_effects(i, true)
+	return i
 
 func update_status_effects(_i : Item, _g : bool):
 	pass

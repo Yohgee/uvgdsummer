@@ -11,7 +11,6 @@ func _ready() -> void:
 	label.hide()
 
 func get_item():
-	print(i.stack)
 	if i.stack > 1:
 		label.show()
 		label.text = "x" + str(i.stack)

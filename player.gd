@@ -101,7 +101,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func get_item(i : Item):
-	super.get_item(i)
+	i = super.get_item(i)
 	if !i.status_effect:
 		item_display.add_item_to_q(i)
 		for c : ItemContainerUI in grid_container.get_children():
