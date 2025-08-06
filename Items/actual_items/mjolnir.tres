@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Mjolnir" load_steps=3 format=3 uid="uid://diujkigm64pxd"]
+
+[ext_resource type="Script" uid="uid://b31vbeend2xwl" path="res://Items/Mjolnir.gd" id="1_fhxkl"]
+[ext_resource type="Texture2D" uid="uid://xyflwishfsen" path="res://Art/items/mjolnir.png" id="2_7e1da"]
+
+[resource]
+script = ExtResource("1_fhxkl")
+name = "Mjolnir"
+desc = "25% chance on hit to summon lightning for 400% (+100% per stack) damage."
+texture = ExtResource("2_7e1da")
+status_effect = false
+metadata/_custom_type_script = "uid://b31vbeend2xwl"

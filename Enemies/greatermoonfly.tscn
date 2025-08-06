@@ -27,6 +27,7 @@ proc = 1.0
 lifetime = 10.0
 velocity = Vector2(250, 0)
 acceleration = Vector2(0, 0)
+pierce = 1
 metadata/_custom_type_script = "uid://dffyrkj5y36t5"
 
 [sub_resource type="Resource" id="Resource_4pjc8"]
@@ -36,6 +37,7 @@ proc = 1.0
 lifetime = 10.0
 velocity = Vector2(150, 0)
 acceleration = Vector2(0, 0)
+pierce = 1
 metadata/_custom_type_script = "uid://dffyrkj5y36t5"
 
 [sub_resource type="Resource" id="Resource_q8wgv"]
@@ -59,12 +61,13 @@ pools = Array[ExtResource("13_j1crw")]([ExtResource("14_j1crw"), ExtResource("14
 chances = Array[float]([0.15, 0.05])
 metadata/_custom_type_script = "uid://crjy1ln2kvdwa"
 
-[node name="Greater" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "di")]
+[node name="Greater" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "di", "statuses")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_ko8xe")
 hp_bar = NodePath("HealthBar")
 di = NodePath("DropItem")
+statuses = NodePath("HBoxContainer")
 metadata/_custom_type_script = "uid://pfrh7u2ltx2"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -114,3 +117,9 @@ spawn_delay = 5.0
 script = ExtResource("12_vccpv")
 pool_set = SubResource("Resource_c5qu3")
 metadata/_custom_type_script = "uid://c0s05wxd5ynwn"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -9.0
+offset_top = -34.0
+offset_right = 9.0
+offset_bottom = -25.0

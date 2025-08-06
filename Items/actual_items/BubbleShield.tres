@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PropertyChanger" load_steps=3 format=3 uid="uid://slnco0fndrfm"]
+
+[ext_resource type="Script" uid="uid://dveo3mqf0r3i3" path="res://Items/property_changer.gd" id="1_c63mt"]
+[ext_resource type="Texture2D" uid="uid://cf6un6qyeuvel" path="res://Art/items/bubbleshield.png" id="2_lft7n"]
+
+[resource]
+script = ExtResource("1_c63mt")
+value = 10.0
+property = "max_health"
+name = "Bubble Shield"
+desc = "Increase you max health by 10."
+texture = ExtResource("2_lft7n")
+status_effect = false
+metadata/_custom_type_script = "uid://dveo3mqf0r3i3"

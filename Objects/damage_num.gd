@@ -11,7 +11,7 @@ func _ready() -> void:
 	if damage < 0:
 		label.modulate = Color.AQUAMARINE
 	damage = abs(damage)
-	label.text = str(damage)
+	label.text = "%.1f" % damage
 
 func _process(delta: float) -> void:
 	time -= delta

@@ -1,36 +1,15 @@
-[gd_resource type="Resource" script_class="ItemPool" load_steps=11 format=3 uid="uid://fq4ye61425ly"]
+[gd_resource type="Resource" script_class="ItemPool" load_steps=9 format=3 uid="uid://fq4ye61425ly"]
 
 [ext_resource type="Script" uid="uid://cxa12ftuo1c3c" path="res://Items/item.gd" id="1_aslbr"]
-[ext_resource type="Script" uid="uid://dug7flalotkqs" path="res://Items/move_speed.gd" id="2_c1wbn"]
+[ext_resource type="Resource" uid="uid://dwtvoyf2nnsg5" path="res://Items/actual_items/EclipseTreads.tres" id="2_5ew7a"]
 [ext_resource type="Script" uid="uid://dlbgqgtalmu1i" path="res://Items/item_pool.gd" id="2_obhoe"]
-[ext_resource type="Texture2D" uid="uid://b208ey36mifp3" path="res://Art/items/eclipsetreads.png" id="3_5ew7a"]
-[ext_resource type="Script" uid="uid://bcb53qtrmgh4m" path="res://Items/clorophyll.gd" id="4_5ew7a"]
-[ext_resource type="Script" uid="uid://jyr7oaejg2r6" path="res://Items/dmgonhit.gd" id="5_saf36"]
-[ext_resource type="Texture2D" uid="uid://cmssarxy2jiyb" path="res://Art/items/bloodtransfusion.png" id="6_vybkg"]
-
-[sub_resource type="Resource" id="Resource_saf36"]
-script = ExtResource("2_c1wbn")
-speed = 0.1
-name = "Eclipse Treads"
-desc = "Run 10% faster (+ 10% per stack) in both sun and moon."
-texture = ExtResource("3_5ew7a")
-metadata/_custom_type_script = "uid://dug7flalotkqs"
-
-[sub_resource type="Resource" id="Resource_vybkg"]
-script = ExtResource("4_5ew7a")
-name = "Chlorophyll"
-desc = "Heal 2 (+1 per stack) health every 5 (-0.5 second per stack) when there is sun."
-metadata/_custom_type_script = "uid://bcb53qtrmgh4m"
-
-[sub_resource type="Resource" id="Resource_fgo00"]
-script = ExtResource("5_saf36")
-dmg = 2.0
-name = "Blood Transfusion"
-desc = "During the night, deal 2 (+2 per stack) damage."
-texture = ExtResource("6_vybkg")
-metadata/_custom_type_script = "uid://jyr7oaejg2r6"
+[ext_resource type="Resource" uid="uid://dl3flfywkgs61" path="res://Items/actual_items/Chlorophyll.tres" id="3_saf36"]
+[ext_resource type="Resource" uid="uid://nrve416au223" path="res://Items/actual_items/BloodTransfusion.tres" id="4_vybkg"]
+[ext_resource type="Resource" uid="uid://dmnqmj05qouyx" path="res://Items/actual_items/SunSpore.tres" id="5_saf36"]
+[ext_resource type="Resource" uid="uid://slnco0fndrfm" path="res://Items/actual_items/BubbleShield.tres" id="6_vybkg"]
+[ext_resource type="Resource" uid="uid://dgq8rlajyrdp4" path="res://Items/actual_items/VampireFangs.tres" id="7_fgo00"]
 
 [resource]
 script = ExtResource("2_obhoe")
-item_pool = Array[ExtResource("1_aslbr")]([SubResource("Resource_saf36"), SubResource("Resource_vybkg"), SubResource("Resource_fgo00")])
+item_pool = Array[ExtResource("1_aslbr")]([ExtResource("2_5ew7a"), ExtResource("3_saf36"), ExtResource("4_vybkg"), ExtResource("5_saf36"), ExtResource("6_vybkg"), ExtResource("7_fgo00")])
 metadata/_custom_type_script = "uid://dlbgqgtalmu1i"

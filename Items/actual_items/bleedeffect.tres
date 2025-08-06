@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BleedEffect" load_steps=3 format=3 uid="uid://baq8joour8vua"]
+
+[ext_resource type="Script" uid="uid://ba6v5p5oiao3f" path="res://Items/bleed.gd" id="1_08ydm"]
+[ext_resource type="Texture2D" uid="uid://1203cpp2lkm2" path="res://Art/items/bleed.png" id="2_13jnv"]
+
+[resource]
+script = ExtResource("1_08ydm")
+name = "Bleed"
+desc = ""
+texture = ExtResource("2_13jnv")
+status_effect = true
+metadata/_custom_type_script = "uid://ba6v5p5oiao3f"

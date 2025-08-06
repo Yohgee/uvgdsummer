@@ -8,6 +8,8 @@ var time_left : float = 60.0
 @onready var sprite_2d: Sprite2D = $"../CollisionShape2D/Sprite2D"
 @onready var label: Label = $CanvasLayer/Label
 
+@export var spawner : EnemySpawnShrine
+
 signal finish_level
 
 func _ready() -> void:
@@ -16,6 +18,7 @@ func _ready() -> void:
 
 func interact(p : Player):
 	if !active and time_left > 0:
+		spawner.start_spawn()
 		label.show()
 		active = true
 		return

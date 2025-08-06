@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ArcaneSigil" load_steps=3 format=3 uid="uid://cjheeu108ann8"]
+
+[ext_resource type="Script" uid="uid://7svl15armpfy" path="res://Items/arcanesigil.gd" id="1_vdeg3"]
+[ext_resource type="Texture2D" uid="uid://blk5xe7rk3l7y" path="res://Art/items/arcanesigil.png" id="2_otc2u"]
+
+[resource]
+script = ExtResource("1_vdeg3")
+name = "Arcane Sigil"
+desc = "20% chance on hit at night to fire a homing projectile for 200% (+50% per stack) damage."
+texture = ExtResource("2_otc2u")
+status_effect = false
+metadata/_custom_type_script = "uid://7svl15armpfy"

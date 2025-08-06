@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HealOnHit" load_steps=3 format=3 uid="uid://dmnqmj05qouyx"]
+
+[ext_resource type="Script" uid="uid://cvp6pbgxwd37s" path="res://Items/healonhit.gd" id="1_qhbkh"]
+[ext_resource type="Texture2D" uid="uid://dbakcbf4a5ixs" path="res://Art/items/sunspore.png" id="2_kkyuv"]
+
+[resource]
+script = ExtResource("1_qhbkh")
+healhit = 0.1
+name = "Sun Spore"
+desc = "10% (+2% per stack) chance on hit to heal for 10% (+5% per stack) of the damage dealt during the day."
+texture = ExtResource("2_kkyuv")
+status_effect = false
+metadata/_custom_type_script = "uid://cvp6pbgxwd37s"

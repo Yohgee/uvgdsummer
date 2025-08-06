@@ -3,6 +3,8 @@ class_name Enemy
 
 @export var hp_bar : TextureProgressBar
 @export var di : DropItem
+@export var statuses : HBoxContainer
+const STATUS_TEXTURE = preload("res://Items/status_texture.tscn")
 
 func set_health(nv):
 	var d : float = health - nv
@@ -16,8 +18,21 @@ func set_health(nv):
 	dn.global_position = global_position + Vector2(randf_range(-16, 16), hp_bar.position.y - 8 + randf_range(-8, 8))
 
 func die(attacker : Entity, damage : float, proc : float):
-	if attacker is Player:
-		print("hi")
+	#if attacker is Player:
+		#pass
 	if di:
 		di.drop_item()
 	super.die(attacker, damage, proc)
+
+func update_status_effects(i : Item, g : bool):
+	for c : StatusContainerUI in statuses.get_children():
+		if c.i.name == i.name:
+			if g:
+				c.get_item()
+			else:
+				print("surely")
+				c.remove_item()
+			return
+	var nc := STATUS_TEXTURE.instantiate()
+	nc.i = i
+	statuses.add_child(nc)

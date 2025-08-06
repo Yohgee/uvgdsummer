@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FlightRegen" load_steps=3 format=3 uid="uid://be04pbgc1qqeh"]
+
+[ext_resource type="Script" uid="uid://e2a2mnb1p0as" path="res://Items/regain_flight.gd" id="1_oic28"]
+[ext_resource type="Texture2D" uid="uid://4x3mu41v3st7" path="res://Art/items/wingedeye.png" id="2_4v4h0"]
+
+[resource]
+script = ExtResource("1_oic28")
+regen_amt = 0.3
+name = "Winged Eye"
+desc = "15% (+10% per stack) chance on hit to regain 0.3 (+0.2 per stack)  flight."
+texture = ExtResource("2_4v4h0")
+status_effect = false
+metadata/_custom_type_script = "uid://e2a2mnb1p0as"

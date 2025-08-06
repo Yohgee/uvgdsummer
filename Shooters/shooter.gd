@@ -51,6 +51,8 @@ func shoot():
 	var node : Node2D = spawn_node.instantiate()
 	if shooter:
 		node.shooter = shooter
+		if node is Bullet:
+			node.hit.connect(shooter.get_hit)
 	if spawn_res:
 		var vel = spawn_res.get("velocity")
 		var accel = spawn_res.get("acceleration")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MoveSpeedItem" load_steps=3 format=3 uid="uid://dwtvoyf2nnsg5"]
+
+[ext_resource type="Script" uid="uid://dug7flalotkqs" path="res://Items/move_speed.gd" id="1_j1xpl"]
+[ext_resource type="Texture2D" uid="uid://b208ey36mifp3" path="res://Art/items/eclipsetreads.png" id="2_bl4yx"]
+
+[resource]
+script = ExtResource("1_j1xpl")
+speed = 0.1
+name = "Eclipse Treads"
+desc = "Run 10% faster (+ 10% per stack) in both sun and moon."
+texture = ExtResource("2_bl4yx")
+status_effect = false
+metadata/_custom_type_script = "uid://dug7flalotkqs"

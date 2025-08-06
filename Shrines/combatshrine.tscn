@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c81vy0uvaq2ku"]
+[gd_scene load_steps=10 format=3 uid="uid://c81vy0uvaq2ku"]
 
 [ext_resource type="Script" uid="uid://di24gbtq4oaw0" path="res://Shrines/shrine.gd" id="1_rgoug"]
 [ext_resource type="Texture2D" uid="uid://yvcaon7hxion" path="res://Art/combatshrine.png" id="2_rgoug"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c0s05wxd5ynwn" path="res://Objects/drop_item.gd" id="4_sx12b"]
 [ext_resource type="PackedScene" uid="uid://bn5eej07gt80t" path="res://Enemies/moonfly.tscn" id="5_cx1cd"]
 [ext_resource type="Resource" uid="uid://cgepdqldd3icl" path="res://Items/DefaultPools.tres" id="5_styob"]
+[ext_resource type="Script" uid="uid://sp8eblnulxy2" path="res://Shrines/enemy_spawn_shrine.gd" id="8_yiqyg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1whm6"]
 size = Vector2(32, 60)
@@ -40,13 +41,17 @@ theme_override_font_sizes/font_size = 24
 text = "Open"
 horizontal_alignment = 1
 
-[node name="CombatInteract" type="Node2D" parent="." node_paths=PackedStringArray("di")]
+[node name="CombatInteract" type="Node2D" parent="." node_paths=PackedStringArray("di", "spawner")]
 script = ExtResource("3_o5msj")
 di = NodePath("DropItem")
-main_enemy = Array[PackedScene]([ExtResource("4_oho22")])
-adds = Array[PackedScene]([ExtResource("5_cx1cd")])
+spawner = NodePath("EnemySpawnShrine")
 
 [node name="DropItem" type="Node2D" parent="CombatInteract"]
 script = ExtResource("4_sx12b")
 pool_set = ExtResource("5_styob")
 metadata/_custom_type_script = "uid://c0s05wxd5ynwn"
+
+[node name="EnemySpawnShrine" type="Node2D" parent="CombatInteract"]
+script = ExtResource("8_yiqyg")
+main_enemy = Array[PackedScene]([ExtResource("4_oho22")])
+adds = Array[PackedScene]([ExtResource("5_cx1cd")])

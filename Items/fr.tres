@@ -1,8 +1,13 @@
-[gd_resource type="Resource" script_class="FlightRegen" load_steps=2 format=3 uid="uid://eym4rinejuod"]
+[gd_resource type="Resource" script_class="FlightRegen" load_steps=3 format=3 uid="uid://eym4rinejuod"]
 
 [ext_resource type="Script" uid="uid://e2a2mnb1p0as" path="res://Items/regain_flight.gd" id="1_k6wd4"]
+[ext_resource type="Texture2D" uid="uid://4x3mu41v3st7" path="res://Art/items/wingedeye.png" id="2_e16wv"]
 
 [resource]
 script = ExtResource("1_k6wd4")
 regen_amt = 0.5
+name = "test"
+desc = "dasd"
+texture = ExtResource("2_e16wv")
+status_effect = false
 metadata/_custom_type_script = "uid://e2a2mnb1p0as"

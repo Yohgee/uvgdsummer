@@ -15,6 +15,7 @@ func change_stratum():
 		stratum.queue_free()
 	player.position = Vector2.ZERO
 	stratum = strata[wrapi(level, 0, 5)].instantiate()
+	stratum.world = self
 	add_child(stratum)
 
 func _process(delta: float) -> void:

@@ -1,15 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://v57cfg0brij1"]
+[gd_scene load_steps=24 format=3 uid="uid://v57cfg0brij1"]
 
 [ext_resource type="Script" uid="uid://bfnpbesmeqbfv" path="res://player.gd" id="1_y0qk3"]
 [ext_resource type="Texture2D" uid="uid://chxu3t572ajsp" path="res://Art/player.png" id="2_3y5cq"]
+[ext_resource type="Script" uid="uid://cxa12ftuo1c3c" path="res://Items/item.gd" id="2_sbav2"]
 [ext_resource type="Texture2D" uid="uid://bki46yucql7od" path="res://Art/flightbarunder.png" id="3_0ad8t"]
+[ext_resource type="Resource" uid="uid://dgq8rlajyrdp4" path="res://Items/actual_items/VampireFangs.tres" id="3_6jlvs"]
 [ext_resource type="Script" uid="uid://nu1k5evfacry" path="res://Objects/player_ui.gd" id="3_x20fu"]
 [ext_resource type="Texture2D" uid="uid://c7edw1kgpwnjg" path="res://Art/flightbarprog.png" id="4_x20fu"]
 [ext_resource type="Texture2D" uid="uid://diqxysr8qrq5b" path="res://Art/healthbarprog.png" id="5_0ar0x"]
 [ext_resource type="Script" uid="uid://dg4ba2dcqn3wk" path="res://Objects/item_display.gd" id="7_3n8j0"]
 [ext_resource type="Texture2D" uid="uid://b208ey36mifp3" path="res://Art/items/eclipsetreads.png" id="7_f7am4"]
+[ext_resource type="Texture2D" uid="uid://b7nenqus4al66" path="res://Art/chargebarprog.png" id="7_hyl1l"]
 [ext_resource type="Texture2D" uid="uid://dfl5v181d46ft" path="res://Art/staff.png" id="7_slvmq"]
 [ext_resource type="Texture2D" uid="uid://c0khrf0taaspe" path="res://Art/moonstaff.png" id="8_ng3n2"]
+[ext_resource type="Script" uid="uid://ohvwuj1ne6si" path="res://Objects/blocker.gd" id="12_sbav2"]
+[ext_resource type="Texture2D" uid="uid://cxyxm81wj00yd" path="res://Art/theblocker.png" id="13_3ye7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2i4gt"]
 size = Vector2(12, 13)
@@ -51,10 +56,75 @@ _data = {
 &"fade_items": SubResource("Animation_3n8j0")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hyl1l"]
+radius = 64.0
+
+[sub_resource type="Animation" id="Animation_sbav2"]
+resource_name = "block"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blocker/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blocker2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(2, 2), Vector2(2, 2), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_3ye7n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blocker/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blocker2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xxqss"]
+_data = {
+&"RESET": SubResource("Animation_3ye7n"),
+&"block": SubResource("Animation_sbav2")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_y0qk3")
+items = Array[ExtResource("2_sbav2")]([ExtResource("3_6jlvs")])
 metadata/_custom_type_script = "uid://pfrh7u2ltx2"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -75,6 +145,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("3_x20fu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="player_ui_layer/ui"]
@@ -93,6 +164,16 @@ value = 100.0
 texture_under = ExtResource("3_0ad8t")
 texture_progress = ExtResource("5_0ar0x")
 
+[node name="Label" type="Label" parent="player_ui_layer/ui/VBoxContainer/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100/100"
+horizontal_alignment = 2
+
 [node name="FlightBar" type="TextureProgressBar" parent="player_ui_layer/ui/VBoxContainer"]
 layout_mode = 2
 max_value = 1.5
@@ -100,6 +181,31 @@ step = 0.05
 value = 1.5
 texture_under = ExtResource("3_0ad8t")
 texture_progress = ExtResource("4_x20fu")
+
+[node name="Label" type="Label" parent="player_ui_layer/ui/VBoxContainer/FlightBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1.5/1.5"
+horizontal_alignment = 2
+
+[node name="ChargeBar" type="TextureProgressBar" parent="player_ui_layer/ui/VBoxContainer"]
+layout_mode = 2
+texture_under = ExtResource("3_0ad8t")
+texture_progress = ExtResource("7_hyl1l")
+
+[node name="Label" type="Label" parent="player_ui_layer/ui/VBoxContainer/ChargeBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0/100"
+horizontal_alignment = 2
 
 [node name="ItemDisplay" type="Control" parent="player_ui_layer/ui"]
 modulate = Color(1, 1, 1, 0.937255)
@@ -113,6 +219,7 @@ offset_top = -189.0
 offset_right = 200.5
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 script = ExtResource("7_3n8j0")
 
 [node name="ColorRect" type="ColorRect" parent="player_ui_layer/ui/ItemDisplay"]
@@ -163,6 +270,34 @@ libraries = {
 &"": SubResource("AnimationLibrary_sbav2")
 }
 
+[node name="GridContainer" type="GridContainer" parent="player_ui_layer/ui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21
+anchor_top = 0.95
+anchor_right = 0.79
+anchor_bottom = 0.98
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 22
+
+[node name="StatusEffects" type="HBoxContainer" parent="player_ui_layer/ui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.165
+anchor_top = 0.015
+anchor_right = 0.5
+anchor_bottom = 0.02
+offset_left = -20.0
+offset_right = -4.0
+offset_bottom = 16.0
+grow_horizontal = 2
+
 [node name="wand" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("7_slvmq")
@@ -181,5 +316,25 @@ one_shot = true
 wait_time = 0.15
 one_shot = true
 
+[node name="Blocker" type="Area2D" parent="." node_paths=PackedStringArray("player")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("12_sbav2")
+player = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blocker"]
+shape = SubResource("CircleShape2D_hyl1l")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xxqss")
+}
+
+[node name="Blocker2" type="Sprite2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("13_3ye7n")
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="NightAttackTimer" to="." method="_on_night_attack_timer_timeout"]
+[connection signal="area_entered" from="Blocker" to="Blocker" method="_on_area_entered"]

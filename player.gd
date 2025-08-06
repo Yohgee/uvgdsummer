@@ -4,6 +4,10 @@ class_name Player
 const MAX_FALL = 400
 const PLAYER_BULLET = preload("res://Objects/player_bullet.tscn")
 const PLAYER_NIGHT_BULLET = preload("res://Objects/player_night_bullet.tscn")
+const ITEM_TEXTURE = preload("res://Items/item_texture.tscn")
+const STATUS_TEXTURE = preload("res://Items/status_texture.tscn")
+signal on_block(blocker : Entity)
+@onready var grid_container: GridContainer = $player_ui_layer/ui/GridContainer
 
 @onready var ui: PlayerUI = $player_ui_layer/ui
 @onready var wand_spr: Sprite2D = $wand
@@ -11,17 +15,33 @@ const PLAYER_NIGHT_BULLET = preload("res://Objects/player_night_bullet.tscn")
 @onready var night_attack_timer: Timer = $NightAttackTimer
 @onready var item_display: ItemDisplay = $player_ui_layer/ui/ItemDisplay
 @onready var nightwand_spr: Sprite2D = $nightwand
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var max_flight := 1.5:
 	set(nv):
 		max_flight = nv
 		ui.flight_bar.max_value = max_flight
+		ui.flight_bar.get_node("Label").text = "%.1f / " % flight + "%.1f" % max_flight
 
 @onready var flight = max_flight:
 	set(nv):
 		flight = clamp(nv, 0, max_flight)
 		ui.flight_bar.value = flight
+		ui.flight_bar.get_node("Label").text = "%.1f / " % flight + "%.1f" % max_flight
 
+var max_charge := 100:
+	set(nv):
+		max_charge = nv
+		ui.charge_bar.max_value = max_charge
+		ui.charge_bar.get_node("Label").text = "%.1f / " % charge + "%.1f" % max_charge
+
+var charge = 0:
+	set(nv):
+		charge = clamp(nv, 0, max_charge)
+		ui.charge_bar.value = charge
+		ui.charge_bar.get_node("Label").text = "%.1f / " % charge + "%.1f" % max_charge
+
+var charge_gain := 5
 var gravity = 980
 var flight_speed : float = 125
 var flight_recharge_mult := 2
@@ -37,12 +57,14 @@ var bullet_pierce : int = 1
 
 var can_attack := true
 var can_attack_night := true
+var dead = false
 
 func _ready() -> void:
 	super._ready()
 	health = max_health
 
 func _physics_process(delta: float) -> void:
+	if dead: return
 	
 	velocity.x = (Input.get_action_strength("right") - Input.get_action_strength("left")) * base_speed * speed_multiplier
 	
@@ -71,18 +93,30 @@ func _physics_process(delta: float) -> void:
 			nightwand_spr.show()
 			night_attack_timer.start()
 			spawn_bullet(PLAYER_NIGHT_BULLET)
-	
-	
+	if Input.is_action_just_pressed("block") and charge >= 100:
+		charge -= 100
+		flight = max_flight
+		animation_player.play("block")
+		on_block.emit(self)
 	move_and_slide()
 
 func get_item(i : Item):
 	super.get_item(i)
-	item_display.add_item_to_q(i)
+	if !i.status_effect:
+		item_display.add_item_to_q(i)
+		for c : ItemContainerUI in grid_container.get_children():
+			if c.i.name == i.name:
+				c.get_item()
+				return
+		var nc : ItemContainerUI = ITEM_TEXTURE.instantiate()
+		nc.i = i
+		grid_container.add_child(nc)
 
 func set_health(nv):
 	var d : float = health - nv
 	health = clamp(nv, 0, max_health)
 	ui.health_bar.value = health
+	ui.health_bar.get_node("Label").text = "%.1f / " % health + "%.1f" % max_health
 	var dn = DAMAGE_NUM.instantiate()
 	dn.damage = d
 	get_parent().call_deferred("add_child", dn)
@@ -91,6 +125,7 @@ func set_health(nv):
 func set_max_health(nv):
 	max_health = nv
 	ui.health_bar.max_value = max_health
+	ui.health_bar.get_node("Label").text = "%.1f / " % health + "%.1f" % max_health
 
 func spawn_bullet(b : PackedScene):
 	var angle := get_angle_to(get_global_mouse_position())
@@ -107,7 +142,30 @@ func _on_attack_timer_timeout() -> void:
 	can_attack = true
 	wand_spr.hide()
 
+func get_kill(target : Entity, damage : float, proc : float):
+	super.get_kill(target, damage, proc)
+	charge += charge_gain
 
 func _on_night_attack_timer_timeout() -> void:
 	can_attack_night = true
 	nightwand_spr.hide()
+
+func die(attacker : Entity, damage : float, proc : float):
+	on_death.emit(attacker, self, damage, proc)
+	var dp = DEATHPARTICLES.instantiate()
+	get_tree().current_scene.add_child(dp)
+	dp.global_position = global_position
+	hide()
+	dead=true
+
+func update_status_effects(i : Item, g : bool):
+	for c : StatusContainerUI in ui.status_effects.get_children():
+		if c.i.name == i.name:
+			if g:
+				c.get_item()
+			else:
+				c.remove_item()
+			return
+	var nc := STATUS_TEXTURE.instantiate()
+	nc.i = i
+	ui.status_effects.add_child(nc)

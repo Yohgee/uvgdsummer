@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PropertyChanger" load_steps=3 format=3 uid="uid://dejsiijgfmu71"]
+
+[ext_resource type="Script" uid="uid://dveo3mqf0r3i3" path="res://Items/property_changer.gd" id="1_0ltfn"]
+[ext_resource type="Texture2D" uid="uid://bjtcc7bwm3021" path="res://Art/items/manafocus.png" id="2_jhpka"]
+
+[resource]
+script = ExtResource("1_0ltfn")
+value = 1.0
+property = "bullet_pierce"
+name = "Mana Focus"
+desc = "Your spells now pierce enemies (+1 enemy per stack)."
+texture = ExtResource("2_jhpka")
+status_effect = false
+metadata/_custom_type_script = "uid://dveo3mqf0r3i3"

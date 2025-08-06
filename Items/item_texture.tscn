@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhlpn8evtnqcr"]
+
+[ext_resource type="Texture2D" uid="uid://bl82vo0kq0u8b" path="res://Art/randomempty20x20.png" id="1_x3rik"]
+[ext_resource type="Script" uid="uid://dqwwecp01cgu0" path="res://Items/item_container_ui.gd" id="2_0uees"]
+[ext_resource type="Texture2D" uid="uid://c653kaujulhof" path="res://Art/items/ceslestialstones.png" id="2_o6qdg"]
+
+[node name="TextureRect" type="TextureRect"]
+mouse_filter = 0
+texture = ExtResource("1_x3rik")
+script = ExtResource("2_0uees")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 10)
+scale = Vector2(2, 2)
+texture = ExtResource("2_o6qdg")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 40.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "x1"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -121.0
+offset_right = 231.0
+offset_bottom = -9.0
+color = Color(0, 0, 0, 0.458824)
+
+[node name="desc" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THIS IS THE ITEMS DESCRIPTION AGAIN HAHAHA "
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,14 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnymaathjos8a"]
+[gd_scene load_steps=11 format=3 uid="uid://dnymaathjos8a"]
 
 [ext_resource type="Script" uid="uid://b7u5pmq7s2" path="res://Rooms/room.gd" id="1_fohwy"]
 [ext_resource type="Texture2D" uid="uid://nhur1ry6d0nk" path="res://Art/Rooms/Stratum0/room_0.png" id="2_fohwy"]
 [ext_resource type="Script" uid="uid://cklbnqu5s3ip8" path="res://Objects/structure_res.gd" id="2_xxwnb"]
 [ext_resource type="PackedScene" uid="uid://bgolipxu0oc7s" path="res://Shrines/bloodshrine.tscn" id="3_6oefe"]
 [ext_resource type="PackedScene" uid="uid://c81vy0uvaq2ku" path="res://Shrines/combatshrine.tscn" id="4_302qx"]
+[ext_resource type="PackedScene" uid="uid://bn1l4bj2ot0x6" path="res://Shrines/luckshrine.tscn" id="5_6oefe"]
 
 [sub_resource type="Resource" id="Resource_wmspg"]
 script = ExtResource("2_xxwnb")
-weight = 10
+weight = 5
 struct = ExtResource("3_6oefe")
 metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
 
@@ -18,11 +19,17 @@ weight = 2
 struct = ExtResource("4_302qx")
 metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
 
+[sub_resource type="Resource" id="Resource_xxwnb"]
+script = ExtResource("2_xxwnb")
+weight = 5
+struct = ExtResource("5_6oefe")
+metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fohwy"]
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_fohwy")
-structures = Array[ExtResource("2_xxwnb")]([SubResource("Resource_wmspg"), SubResource("Resource_12w1d")])
+structures = Array[ExtResource("2_xxwnb")]([SubResource("Resource_wmspg"), SubResource("Resource_12w1d"), SubResource("Resource_xxwnb")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_fohwy")

@@ -27,10 +27,11 @@ class_name Stratum
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var name_label: Label = $CanvasLayer/Control/NameLabel
 
+var world : World
 var spawn_credits : int = 30
 var wave_timer : Timer
-var max_wave_time : float = 7
-var min_wave_time : float = 4
+var max_wave_time : float = 30
+var min_wave_time : float = 15
 
 func _ready() -> void:
 	name_label.text = "Stratum " + str(level) + ": " + level_name
@@ -59,14 +60,40 @@ func _ready() -> void:
 		pos.x -= room_width * stratum_width
 		pos.y -= room_height
 	
-	wave_timer.start()
+	wave_timer = Timer.new()
+	add_child(wave_timer)
+	wave_timer.start(randf_range(min_wave_time/2, max_wave_time/2))
+	wave_timer.timeout.connect(spawn_wave)
+	spawn_credits += world.level * 10
 	animation_player.play("name_fade")
 
-func _process(delta: float) -> void:
-	pass
-
 func spawn_wave():
-	pass
+	wave_timer.stop()
+	var ms : int = sun_credits.min()
+	var mm : int = moon_credits.min()
+	
+	while (spawn_credits >= ms and WorldTime.get_sun()) or (spawn_credits >= mm and WorldTime.get_moon()):
+		var sunspawn : int = randi_range(0, sun_enemies.size()-1)
+		if spawn_credits >= sun_credits[sunspawn] and WorldTime.get_sun():
+			spawn_enemy(sun_enemies[sunspawn])
+			spawn_credits -= sun_credits[sunspawn]
+		var moonspawn : int = randi_range(0, moon_enemies.size()-1)
+		if spawn_credits >= moon_credits[moonspawn] and WorldTime.get_moon():
+			spawn_enemy(moon_enemies[moonspawn])
+			spawn_credits -= moon_credits[moonspawn]
+	
+	var new_time :=randf_range(min_wave_time - clamp(world.level, 0, 7), max_wave_time- clamp(floor(world.level * 0.5), 0, 7))
+	spawn_credits = 30 + world.level * 10
+	if WorldTime.eclipse:
+		spawn_credits *= 2
+		new_time *= 0.5
+	wave_timer.start(new_time)
+
+func spawn_enemy(s : PackedScene):
+	var p : Player = get_tree().get_first_node_in_group("player")
+	var e : Entity = s.instantiate()
+	add_child(e)
+	e.global_position = p.global_position + Vector2(0, -500 + randf_range(-200, 100)).rotated(randf_range(-PI/2, PI/2))
 
 func cleanse():
 	for c in get_children():

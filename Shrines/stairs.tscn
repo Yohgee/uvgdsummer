@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://drt8n34fh4vp7"]
+[gd_scene load_steps=8 format=3 uid="uid://drt8n34fh4vp7"]
 
 [ext_resource type="Script" uid="uid://di24gbtq4oaw0" path="res://Shrines/shrine.gd" id="1_c6ei3"]
 [ext_resource type="Texture2D" uid="uid://h01wshxx7ovx" path="res://Art/stairs.png" id="2_7630a"]
 [ext_resource type="Script" uid="uid://ffjcyplxifpt" path="res://Shrines/stair_interact.gd" id="3_7630a"]
+[ext_resource type="Script" uid="uid://sp8eblnulxy2" path="res://Shrines/enemy_spawn_shrine.gd" id="4_7hof5"]
+[ext_resource type="PackedScene" uid="uid://b6h6g5i3us7a2" path="res://Enemies/greatermoonfly.tscn" id="5_tbr5u"]
+[ext_resource type="PackedScene" uid="uid://bn5eej07gt80t" path="res://Enemies/moonfly.tscn" id="6_wg78d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1whm6"]
 size = Vector2(32, 60)
@@ -44,6 +47,7 @@ script = ExtResource("3_7630a")
 [node name="CanvasLayer" type="CanvasLayer" parent="StairInteract"]
 
 [node name="Label" type="Label" parent="StairInteract/CanvasLayer"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.2
@@ -57,3 +61,13 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "Time Left : 60"
 horizontal_alignment = 1
+
+[node name="EnemySpawnShrine" type="Node2D" parent="StairInteract"]
+script = ExtResource("4_7hof5")
+main_enemy = Array[PackedScene]([ExtResource("5_tbr5u")])
+adds = Array[PackedScene]([ExtResource("6_wg78d")])
+spawn_radius = 350
+radius_var = 50
+min_add = 4
+max_add = 7
+metadata/_custom_type_script = "uid://sp8eblnulxy2"

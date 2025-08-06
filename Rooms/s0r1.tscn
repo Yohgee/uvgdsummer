@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cldw8o383qkp"]
+[gd_scene load_steps=11 format=3 uid="uid://cldw8o383qkp"]
 
 [ext_resource type="Script" uid="uid://b7u5pmq7s2" path="res://Rooms/room.gd" id="1_7cx0i"]
 [ext_resource type="Texture2D" uid="uid://b2ofb78tljf0v" path="res://Art/Rooms/Stratum0/room_1.png" id="2_7cx0i"]
 [ext_resource type="Script" uid="uid://cklbnqu5s3ip8" path="res://Objects/structure_res.gd" id="2_ibeio"]
 [ext_resource type="PackedScene" uid="uid://bgolipxu0oc7s" path="res://Shrines/bloodshrine.tscn" id="3_33qas"]
 [ext_resource type="PackedScene" uid="uid://c81vy0uvaq2ku" path="res://Shrines/combatshrine.tscn" id="4_guw1q"]
+[ext_resource type="PackedScene" uid="uid://bn1l4bj2ot0x6" path="res://Shrines/luckshrine.tscn" id="5_33qas"]
 
 [sub_resource type="Resource" id="Resource_lvf57"]
 script = ExtResource("2_ibeio")
@@ -14,15 +15,21 @@ metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
 
 [sub_resource type="Resource" id="Resource_i7vns"]
 script = ExtResource("2_ibeio")
-weight = 3
+weight = 4
 struct = ExtResource("4_guw1q")
+metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
+
+[sub_resource type="Resource" id="Resource_guw1q"]
+script = ExtResource("2_ibeio")
+weight = 3
+struct = ExtResource("5_33qas")
 metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cx0i"]
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_7cx0i")
-structures = Array[ExtResource("2_ibeio")]([SubResource("Resource_lvf57"), SubResource("Resource_i7vns")])
+structures = Array[ExtResource("2_ibeio")]([SubResource("Resource_lvf57"), SubResource("Resource_i7vns"), SubResource("Resource_guw1q")])
 struct_spawn_ratio = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

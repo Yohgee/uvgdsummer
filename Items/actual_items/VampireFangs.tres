@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="VampireFangs" load_steps=4 format=3 uid="uid://dgq8rlajyrdp4"]
+
+[ext_resource type="Resource" uid="uid://baq8joour8vua" path="res://Items/actual_items/bleedeffect.tres" id="1_chjh2"]
+[ext_resource type="Script" uid="uid://lh52h4nvfqbb" path="res://Items/vampirefangs.gd" id="1_yljro"]
+[ext_resource type="Texture2D" uid="uid://bfq1ycef07a32" path="res://Art/items/vampirefangs.png" id="2_7ok3k"]
+
+[resource]
+script = ExtResource("1_yljro")
+effect = ExtResource("1_chjh2")
+name = "Vampire Fangs"
+desc = "10% (+10% per stack) chance on hit to apply bleed during night."
+texture = ExtResource("2_7ok3k")
+status_effect = false
+metadata/_custom_type_script = "uid://lh52h4nvfqbb"

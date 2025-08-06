@@ -39,3 +39,7 @@ size_flags_vertical = 4
 value = 100.0
 texture_under = ExtResource("3_572h1")
 texture_progress = ExtResource("4_rt1x0")
+
+[node name="statuses" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

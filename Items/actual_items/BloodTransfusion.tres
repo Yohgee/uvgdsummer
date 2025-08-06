@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DmgOnHit" load_steps=3 format=3 uid="uid://nrve416au223"]
+
+[ext_resource type="Script" uid="uid://jyr7oaejg2r6" path="res://Items/dmgonhit.gd" id="1_238wy"]
+[ext_resource type="Texture2D" uid="uid://cmssarxy2jiyb" path="res://Art/items/bloodtransfusion.png" id="2_6qwgv"]
+
+[resource]
+script = ExtResource("1_238wy")
+dmghit = 2.0
+name = "Blood Transfusion"
+desc = "During the night, deal 2 (+2 per stack) damage."
+texture = ExtResource("2_6qwgv")
+status_effect = false
+metadata/_custom_type_script = "uid://jyr7oaejg2r6"
