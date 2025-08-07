@@ -1,8 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://v57cfg0brij1"]
+[gd_scene load_steps=24 format=3 uid="uid://v57cfg0brij1"]
 
 [ext_resource type="Script" uid="uid://bfnpbesmeqbfv" path="res://player.gd" id="1_y0qk3"]
 [ext_resource type="Texture2D" uid="uid://chxu3t572ajsp" path="res://Art/player.png" id="2_3y5cq"]
+[ext_resource type="Script" uid="uid://cxa12ftuo1c3c" path="res://Items/item.gd" id="2_6jlvs"]
 [ext_resource type="Texture2D" uid="uid://bki46yucql7od" path="res://Art/flightbarunder.png" id="3_0ad8t"]
+[ext_resource type="Resource" uid="uid://dvsr23k41nxkv" path="res://Items/actual_items/SurgeAbsorber.tres" id="3_6jlvs"]
 [ext_resource type="Script" uid="uid://nu1k5evfacry" path="res://Objects/player_ui.gd" id="3_x20fu"]
 [ext_resource type="Texture2D" uid="uid://c7edw1kgpwnjg" path="res://Art/flightbarprog.png" id="4_x20fu"]
 [ext_resource type="Texture2D" uid="uid://diqxysr8qrq5b" path="res://Art/healthbarprog.png" id="5_0ar0x"]
@@ -57,6 +59,33 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_hyl1l"]
 radius = 64.0
 
+[sub_resource type="Animation" id="Animation_3ye7n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blocker/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blocker2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
 [sub_resource type="Animation" id="Animation_sbav2"]
 resource_name = "block"
 length = 2.0
@@ -85,33 +114,6 @@ tracks/1/keys = {
 "values": [Vector2(1e-05, 1e-05), Vector2(2, 2), Vector2(2, 2), Vector2(1e-05, 1e-05)]
 }
 
-[sub_resource type="Animation" id="Animation_3ye7n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Blocker/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Blocker2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xxqss"]
 _data = {
 &"RESET": SubResource("Animation_3ye7n"),
@@ -122,6 +124,7 @@ _data = {
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_y0qk3")
+items = Array[ExtResource("2_6jlvs")]([ExtResource("3_6jlvs")])
 metadata/_custom_type_script = "uid://pfrh7u2ltx2"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -191,6 +194,7 @@ horizontal_alignment = 2
 
 [node name="ChargeBar" type="TextureProgressBar" parent="player_ui_layer/ui/VBoxContainer"]
 layout_mode = 2
+value = 100.0
 texture_under = ExtResource("3_0ad8t")
 texture_progress = ExtResource("7_hyl1l")
 
@@ -201,7 +205,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "0/100"
+text = "100/100"
 horizontal_alignment = 2
 
 [node name="ItemDisplay" type="Control" parent="player_ui_layer/ui"]

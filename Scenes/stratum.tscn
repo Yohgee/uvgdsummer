@@ -1,10 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://q1tv8vnu23cr"]
+[gd_scene load_steps=18 format=3 uid="uid://q1tv8vnu23cr"]
 
 [ext_resource type="Script" uid="uid://dnp572suufbfy" path="res://Scenes/stratum.gd" id="1_nj1ie"]
 [ext_resource type="PackedScene" uid="uid://dnymaathjos8a" path="res://Rooms/s0r0.tscn" id="3_6ndda"]
 [ext_resource type="PackedScene" uid="uid://cldw8o383qkp" path="res://Rooms/s0r1.tscn" id="3_df4gb"]
 [ext_resource type="PackedScene" uid="uid://bn5eej07gt80t" path="res://Enemies/moonfly.tscn" id="4_df4gb"]
+[ext_resource type="PackedScene" uid="uid://dmpdwpss7bpqq" path="res://Rooms/s0r2.tscn" id="4_lsyk8"]
+[ext_resource type="PackedScene" uid="uid://e5apo5litdyp" path="res://Rooms/s0r3.tscn" id="5_m6prk"]
 [ext_resource type="PackedScene" uid="uid://b6h6g5i3us7a2" path="res://Enemies/greatermoonfly.tscn" id="5_r4xtj"]
+[ext_resource type="PackedScene" uid="uid://2khfudd0gptf" path="res://Rooms/s0r4.tscn" id="6_3oln1"]
+[ext_resource type="PackedScene" uid="uid://lavinth1oqnx" path="res://Rooms/s0r5.tscn" id="7_o1pkm"]
+[ext_resource type="PackedScene" uid="uid://blpluc1o8k2k2" path="res://Rooms/s0r6.tscn" id="8_26p27"]
+[ext_resource type="PackedScene" uid="uid://dgbe662cuptbh" path="res://Rooms/s0r7.tscn" id="9_xrc50"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ukwj"]
 
@@ -53,7 +59,7 @@ _data = {
 
 [node name="Stratum" type="Node2D"]
 script = ExtResource("1_nj1ie")
-rooms = Array[PackedScene]([ExtResource("3_6ndda"), ExtResource("3_6ndda"), ExtResource("3_6ndda"), ExtResource("3_df4gb"), ExtResource("3_df4gb"), ExtResource("3_df4gb")])
+rooms = Array[PackedScene]([ExtResource("3_6ndda"), ExtResource("3_df4gb"), ExtResource("4_lsyk8"), ExtResource("5_m6prk"), ExtResource("6_3oln1"), ExtResource("7_o1pkm"), ExtResource("8_26p27"), ExtResource("9_xrc50")])
 sun_enemies = Array[PackedScene]([ExtResource("4_df4gb")])
 sun_credits = Array[int]([10])
 moon_enemies = Array[PackedScene]([ExtResource("5_r4xtj")])

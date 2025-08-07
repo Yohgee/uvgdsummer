@@ -1,5 +1,7 @@
 extends Node
 
+signal on_time_change
+
 var time : float = 0
 var sun : bool = true
 var moon : bool = false
@@ -20,6 +22,7 @@ func add_time(v : float):
 	
 
 func change_phase():
+	on_time_change.emit()
 	sun = !sun
 	moon = !moon
 	if randf() <= 0.2 and !eclipse:

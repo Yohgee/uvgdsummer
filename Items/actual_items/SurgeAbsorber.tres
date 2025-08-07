@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SurgeAbsorber" load_steps=3 format=3 uid="uid://dvsr23k41nxkv"]
+
+[ext_resource type="Script" uid="uid://c87wrx36mrnmq" path="res://Items/surgeabsorber.gd" id="1_jtn54"]
+[ext_resource type="Texture2D" uid="uid://do4xjbgc772ct" path="res://Art/items/surgeabsorber.png" id="2_8737p"]
+
+[resource]
+script = ExtResource("1_jtn54")
+regen_amt = 15.0
+name = "Surge Absorber"
+desc = "Heal for 15 (+10 per stack) on block."
+texture = ExtResource("2_8737p")
+status_effect = false
+metadata/_custom_type_script = "uid://c87wrx36mrnmq"

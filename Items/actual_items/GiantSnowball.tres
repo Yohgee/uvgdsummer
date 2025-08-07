@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="GiantSnowball" load_steps=3 format=3 uid="uid://cojumq3u26rkq"]
+
+[ext_resource type="Script" uid="uid://3yl7l2gbth56" path="res://Items/GiantSnowball.gd" id="1_l7dly"]
+[ext_resource type="Texture2D" uid="uid://bodjnivhmbs7e" path="res://Art/items/giantsnowball.png" id="2_ver5i"]
+
+[resource]
+script = ExtResource("1_l7dly")
+name = "Giant Snowball"
+desc = "15% (+1% per stack) chance on hit to fire a snowball for 50% (+20% per stack) damage that slows enemies."
+texture = ExtResource("2_ver5i")
+status_effect = false
+metadata/_custom_type_script = "uid://3yl7l2gbth56"

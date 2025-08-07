@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="ItemPool" load_steps=6 format=3 uid="uid://dyc20xinl05nf"]
+[gd_resource type="Resource" script_class="ItemPool" load_steps=8 format=3 uid="uid://dyc20xinl05nf"]
 
 [ext_resource type="Script" uid="uid://cxa12ftuo1c3c" path="res://Items/item.gd" id="1_tm4yd"]
 [ext_resource type="Resource" uid="uid://be04pbgc1qqeh" path="res://Items/actual_items/WingedEye.tres" id="2_074f2"]
 [ext_resource type="Resource" uid="uid://dejsiijgfmu71" path="res://Items/actual_items/ManaFocus.tres" id="3_tm4yd"]
 [ext_resource type="Resource" uid="uid://dtn7su1h3si44" path="res://Items/actual_items/SolarSpear.tres" id="4_0xljy"]
+[ext_resource type="Resource" uid="uid://o6b2bxt4dae1" path="res://Items/actual_items/EclipseHeart.tres" id="5_tm4yd"]
+[ext_resource type="Resource" uid="uid://dvsr23k41nxkv" path="res://Items/actual_items/SurgeAbsorber.tres" id="6_0xljy"]
 [ext_resource type="Script" uid="uid://dlbgqgtalmu1i" path="res://Items/item_pool.gd" id="6_mvtqa"]
 
 [resource]
 script = ExtResource("6_mvtqa")
-item_pool = Array[ExtResource("1_tm4yd")]([ExtResource("2_074f2"), ExtResource("3_tm4yd"), ExtResource("4_0xljy")])
+item_pool = Array[ExtResource("1_tm4yd")]([ExtResource("2_074f2"), ExtResource("3_tm4yd"), ExtResource("4_0xljy"), ExtResource("5_tm4yd"), ExtResource("6_0xljy")])
 metadata/_custom_type_script = "uid://dlbgqgtalmu1i"

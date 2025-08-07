@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cuvpnywj3k8dn"]
+[gd_scene load_steps=16 format=3 uid="uid://cuvpnywj3k8dn"]
 
 [ext_resource type="Script" uid="uid://dorx0jiwc6g7d" path="res://Scenes/world.gd" id="1_8j60k"]
 [ext_resource type="PackedScene" uid="uid://v57cfg0brij1" path="res://Objects/player.tscn" id="1_a02cp"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://rfhirrb4siqd" path="res://Art/sunspr.png" id="6_5ukr8"]
 [ext_resource type="Texture2D" uid="uid://bfy5wnagg6t6s" path="res://Art/moonspr.png" id="7_o06y3"]
 [ext_resource type="Texture2D" uid="uid://dprcu238j8yv0" path="res://Art/timedia2l.png" id="8_k7acu"]
+[ext_resource type="PackedScene" uid="uid://c7qtfdvmlrmra" path="res://Objects/dropped_item.tscn" id="9_5v1tr"]
+[ext_resource type="Resource" uid="uid://cqakv7vksdwcm" path="res://Items/actual_items/WandScope.tres" id="10_0fj1v"]
+[ext_resource type="Resource" uid="uid://cojumq3u26rkq" path="res://Items/actual_items/GiantSnowball.tres" id="10_ikia7"]
 
 [sub_resource type="Animation" id="Animation_0fj1v"]
 length = 0.001
@@ -135,3 +138,23 @@ color = Color(0, 0, 0, 1)
 libraries = {
 &"": SubResource("AnimationLibrary_ikia7")
 }
+
+[node name="DroppedItem" parent="." instance=ExtResource("9_5v1tr")]
+position = Vector2(190, -132)
+item = ExtResource("10_ikia7")
+
+[node name="DroppedItem2" parent="." instance=ExtResource("9_5v1tr")]
+position = Vector2(262, -133)
+item = ExtResource("10_0fj1v")
+
+[node name="DroppedItem3" parent="." instance=ExtResource("9_5v1tr")]
+position = Vector2(320, -182)
+item = ExtResource("10_0fj1v")
+
+[node name="DroppedItem4" parent="." instance=ExtResource("9_5v1tr")]
+position = Vector2(394, -190)
+item = ExtResource("10_0fj1v")
+
+[node name="DroppedItem5" parent="." instance=ExtResource("9_5v1tr")]
+position = Vector2(471, -209)
+item = ExtResource("10_0fj1v")

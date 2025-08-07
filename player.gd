@@ -35,7 +35,7 @@ var max_charge := 100:
 		ui.charge_bar.max_value = max_charge
 		ui.charge_bar.get_node("Label").text = "%.1f / " % charge + "%.1f" % max_charge
 
-var charge = 0:
+var charge = 100:
 	set(nv):
 		charge = clamp(nv, 0, max_charge)
 		ui.charge_bar.value = charge

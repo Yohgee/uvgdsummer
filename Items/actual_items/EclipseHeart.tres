@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EclipseHeart" load_steps=3 format=3 uid="uid://o6b2bxt4dae1"]
+
+[ext_resource type="Script" uid="uid://cvcww7vcbrk6s" path="res://Items/eclipseheart.gd" id="1_howno"]
+[ext_resource type="Texture2D" uid="uid://0ck5ya6j1q6x" path="res://Art/items/eclipseheart.png" id="2_52hc5"]
+
+[resource]
+script = ExtResource("1_howno")
+regen_amt = 10.0
+name = "Eclipse Heart"
+desc = "Heal for 10 (+5 per stack) on when the time cycle changes."
+texture = ExtResource("2_52hc5")
+status_effect = false
+metadata/_custom_type_script = "uid://cvcww7vcbrk6s"

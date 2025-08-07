@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_hb0pk")
 name = "Solar Spear"
-desc = "10% (+2% per stack) chance on hit to shoot a "
+desc = "10% (+2% per stack) chance on hit to shoot a spear for 150% damage."
 texture = ExtResource("2_xggh6")
 status_effect = false
 metadata/_custom_type_script = "uid://s5uandigb1xr"
