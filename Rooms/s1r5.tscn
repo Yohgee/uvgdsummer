@@ -1,0 +1,424 @@
+[gd_scene load_steps=11 format=3 uid="uid://c41q2pwc7ykhe"]
+
+[ext_resource type="Script" uid="uid://b7u5pmq7s2" path="res://Rooms/room.gd" id="1_mdp34"]
+[ext_resource type="Script" uid="uid://cklbnqu5s3ip8" path="res://Objects/structure_res.gd" id="2_5ec57"]
+[ext_resource type="PackedScene" uid="uid://bgolipxu0oc7s" path="res://Shrines/bloodshrine.tscn" id="3_6paw1"]
+[ext_resource type="PackedScene" uid="uid://c81vy0uvaq2ku" path="res://Shrines/combatshrine.tscn" id="4_rta1k"]
+[ext_resource type="PackedScene" uid="uid://bn1l4bj2ot0x6" path="res://Shrines/luckshrine.tscn" id="5_qw7fd"]
+[ext_resource type="Texture2D" uid="uid://cbwo636wikowk" path="res://Art/Rooms/Stratum1/Stratum1-Recovered.png" id="6_6o260"]
+
+[sub_resource type="Resource" id="Resource_lvf57"]
+script = ExtResource("2_5ec57")
+weight = 5
+struct = ExtResource("3_6paw1")
+metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
+
+[sub_resource type="Resource" id="Resource_i7vns"]
+script = ExtResource("2_5ec57")
+weight = 4
+struct = ExtResource("4_rta1k")
+metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
+
+[sub_resource type="Resource" id="Resource_guw1q"]
+script = ExtResource("2_5ec57")
+weight = 3
+struct = ExtResource("5_qw7fd")
+metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdp34"]
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_mdp34")
+structures = Array[ExtResource("2_5ec57")]([SubResource("Resource_lvf57"), SubResource("Resource_i7vns"), SubResource("Resource_guw1q")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("6_6o260")
+hframes = 8
+frame = 5
+
+[node name="GenerationPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(-96, 6)
+
+[node name="Marker2D2" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(95, 6)
+
+[node name="Marker2D3" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(304, 6)
+
+[node name="Marker2D4" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(496, 6)
+
+[node name="Marker2D5" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(-304, 6)
+
+[node name="Marker2D6" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(-96, 358)
+
+[node name="Marker2D7" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(95, 358)
+
+[node name="Marker2D8" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(304, 358)
+
+[node name="Marker2D9" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(496, 358)
+
+[node name="Marker2D10" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(-304, 358)
+
+[node name="Marker2D11" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(-496, 358)
+
+[node name="Marker2D12" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(304, 182)
+
+[node name="Marker2D13" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(496, 182)
+
+[node name="Marker2D14" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(198, 182)
+
+[node name="Marker2D15" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(-197, 182)
+
+[node name="Marker2D16" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(-399, 182)
+
+[node name="Marker2D17" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(-100, -170)
+
+[node name="Marker2D18" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(96, -170)
+
+[node name="Marker2D19" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(305, -266)
+
+[node name="Marker2D20" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(480, -170)
+
+[node name="Marker2D21" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(-272, -326)
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="StaticBody2D22" type="StaticBody2D" parent="Ground"]
+position = Vector2(304, -116)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D22"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D23" type="StaticBody2D" parent="Ground"]
+position = Vector2(496, -116)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D23"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D24" type="StaticBody2D" parent="Ground"]
+position = Vector2(400, -84)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D24"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D25" type="StaticBody2D" parent="Ground"]
+position = Vector2(304, 60)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D25"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D26" type="StaticBody2D" parent="Ground"]
+position = Vector2(496, 60)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D26"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D27" type="StaticBody2D" parent="Ground"]
+position = Vector2(400, 92)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D27"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D28" type="StaticBody2D" parent="Ground"]
+position = Vector2(304, 236)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D28"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D29" type="StaticBody2D" parent="Ground"]
+position = Vector2(496, 236)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D29"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D30" type="StaticBody2D" parent="Ground"]
+position = Vector2(400, 268)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D30"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D31" type="StaticBody2D" parent="Ground"]
+position = Vector2(-96, 236)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D31"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D32" type="StaticBody2D" parent="Ground"]
+position = Vector2(96, 236)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D32"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D33" type="StaticBody2D" parent="Ground"]
+position = Vector2(0, 268)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D33"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D34" type="StaticBody2D" parent="Ground"]
+position = Vector2(-496, 236)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D34"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D35" type="StaticBody2D" parent="Ground"]
+position = Vector2(-304, 236)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D35"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D36" type="StaticBody2D" parent="Ground"]
+position = Vector2(-400, 268)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D36"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D37" type="StaticBody2D" parent="Ground"]
+position = Vector2(-96, -116)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D37"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D40" type="StaticBody2D" parent="Ground"]
+position = Vector2(-304, -116)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D40"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D41" type="StaticBody2D" parent="Ground"]
+position = Vector2(-392, -84)
+scale = Vector2(2.40006, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D41"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D42" type="StaticBody2D" parent="Ground"]
+position = Vector2(-535, -46)
+scale = Vector2(2.48006, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D42"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D43" type="StaticBody2D" parent="Ground"]
+position = Vector2(-272, -322)
+scale = Vector2(4.04005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D43"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D44" type="StaticBody2D" parent="Ground"]
+position = Vector2(-272, -244)
+scale = Vector2(7.96005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D44"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D45" type="StaticBody2D" parent="Ground"]
+position = Vector2(305, -262)
+scale = Vector2(4.92006, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D45"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D46" type="StaticBody2D" parent="Ground"]
+position = Vector2(90, -166)
+scale = Vector2(50.2, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D46"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D47" type="StaticBody2D" parent="Ground"]
+position = Vector2(208, 10)
+scale = Vector2(38.36, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D47"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D48" type="StaticBody2D" parent="Ground"]
+position = Vector2(-304, 186)
+scale = Vector2(28.8, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D48"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D49" type="StaticBody2D" parent="Ground"]
+position = Vector2(-408, 10)
+scale = Vector2(18.44, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D49"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D50" type="StaticBody2D" parent="Ground"]
+position = Vector2(328, 186)
+scale = Vector2(26.44, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D50"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D51" type="StaticBody2D" parent="Ground"]
+position = Vector2(407, 362)
+scale = Vector2(18.4, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D51"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D53" type="StaticBody2D" parent="Ground"]
+position = Vector2(3.05176e-05, 362)
+scale = Vector2(17.6, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D53"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D52" type="StaticBody2D" parent="Ground"]
+position = Vector2(-408, 362)
+scale = Vector2(18.4, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D52"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D38" type="StaticBody2D" parent="Ground"]
+position = Vector2(96, -116)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D38"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true
+
+[node name="StaticBody2D39" type="StaticBody2D" parent="Ground"]
+position = Vector2(0, -84)
+scale = Vector2(3.20005, 0.4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D39"]
+shape = SubResource("RectangleShape2D_mdp34")
+one_way_collision = true

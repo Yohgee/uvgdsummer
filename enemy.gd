@@ -9,8 +9,8 @@ const STATUS_TEXTURE = preload("res://Items/status_texture.tscn")
 
 func _ready() -> void:
 	super._ready()
-	max_health *= 1.0 + float(level)/10.0
-	damage_mult = 1.0 + float(level)/5.0
+	max_health *= 1.0 + float(level) * 0.8
+	damage_mult = 1.0 + float(level) * 0.4
 
 func set_health(nv):
 	var d : float = health - nv

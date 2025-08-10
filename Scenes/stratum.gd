@@ -30,8 +30,8 @@ class_name Stratum
 var world : World
 var spawn_credits : int = 30
 var wave_timer : Timer
-var max_wave_time : float = 30
-var min_wave_time : float = 15
+@export var max_wave_time : float = 30
+@export var min_wave_time : float = 15
 
 func _ready() -> void:
 	name_label.text = "Stratum " + str(level) + ": " + level_name
@@ -84,9 +84,9 @@ func spawn_wave():
 			spawn_credits -= moon_credits[moonspawn]
 	
 	var new_time :=randf_range(min_wave_time - clamp(world.level, 0, 7), max_wave_time- clamp(floor(world.level * 0.5), 0, 7))
-	spawn_credits = 30 + world.level * 10
+	spawn_credits += 30 + world.level * 10
 	if WorldTime.eclipse:
-		spawn_credits *= 2
+		spawn_credits *= 1.5
 		new_time *= 0.5
 	wave_timer.start(new_time)
 

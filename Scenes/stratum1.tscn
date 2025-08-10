@@ -1,8 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1t5c22a23dnv"]
+[gd_scene load_steps=18 format=3 uid="uid://b1t5c22a23dnv"]
 
 [ext_resource type="Script" uid="uid://dnp572suufbfy" path="res://Scenes/stratum.gd" id="1_70l7v"]
-[ext_resource type="PackedScene" uid="uid://dnymaathjos8a" path="res://Rooms/s0r0.tscn" id="2_5lqo3"]
-[ext_resource type="PackedScene" uid="uid://cldw8o383qkp" path="res://Rooms/s0r1.tscn" id="3_os1pn"]
+[ext_resource type="PackedScene" uid="uid://dvx8r6e2ldagn" path="res://Rooms/s1r0.tscn" id="2_k4wlk"]
+[ext_resource type="PackedScene" uid="uid://hrv8nb3c85a" path="res://Rooms/s1r1.tscn" id="3_1u656"]
+[ext_resource type="PackedScene" uid="uid://c1megtjpc1eqf" path="res://Rooms/s1r2.tscn" id="4_b0blf"]
+[ext_resource type="PackedScene" uid="uid://csd61jgx0f24q" path="res://Rooms/s1r3.tscn" id="5_34oke"]
+[ext_resource type="PackedScene" uid="uid://cc3fw1schbhwx" path="res://Rooms/s1r4.tscn" id="6_l8708"]
+[ext_resource type="PackedScene" uid="uid://c41q2pwc7ykhe" path="res://Rooms/s1r5.tscn" id="7_3l053"]
+[ext_resource type="PackedScene" uid="uid://d3tasvjchtgn7" path="res://Rooms/s1r6.tscn" id="8_cc1vu"]
+[ext_resource type="PackedScene" uid="uid://cup8hpaudur1r" path="res://Rooms/s1r7.tscn" id="9_d44ut"]
+[ext_resource type="PackedScene" uid="uid://bn5eej07gt80t" path="res://Enemies/moonfly.tscn" id="10_b0blf"]
+[ext_resource type="PackedScene" uid="uid://b6h6g5i3us7a2" path="res://Enemies/greatermoonfly.tscn" id="11_34oke"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ukwj"]
 
@@ -53,7 +61,12 @@ _data = {
 script = ExtResource("1_70l7v")
 level = 1
 level_name = "Dwellings"
-rooms = Array[PackedScene]([ExtResource("2_5lqo3"), ExtResource("2_5lqo3"), ExtResource("2_5lqo3"), ExtResource("3_os1pn"), ExtResource("3_os1pn"), ExtResource("3_os1pn")])
+rooms = Array[PackedScene]([ExtResource("2_k4wlk"), ExtResource("3_1u656"), ExtResource("4_b0blf"), ExtResource("5_34oke"), ExtResource("6_l8708"), ExtResource("7_3l053"), ExtResource("8_cc1vu"), ExtResource("9_d44ut")])
+border_colour = Color(0.741176, 0.415686, 0.384314, 1)
+sun_enemies = Array[PackedScene]([ExtResource("10_b0blf")])
+sun_credits = Array[int]([10])
+moon_enemies = Array[PackedScene]([ExtResource("11_34oke"), ExtResource("10_b0blf")])
+moon_credits = Array[int]([20, 10])
 
 [node name="Base" type="StaticBody2D" parent="."]
 

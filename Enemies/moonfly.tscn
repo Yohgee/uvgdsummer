@@ -56,10 +56,11 @@ value = 100.0
 texture_under = ExtResource("3_ywhcy")
 texture_progress = ExtResource("4_un58v")
 
-[node name="FlyMovement" type="Node2D" parent="." node_paths=PackedStringArray("entity", "shooters")]
+[node name="FlyMovement" type="Node2D" parent="." node_paths=PackedStringArray("entity", "shooters", "spr")]
 script = ExtResource("5_o0jgr")
 entity = NodePath("..")
 shooters = [NodePath("Shooter")]
+spr = NodePath("../Sprite2D")
 
 [node name="Shooter" parent="FlyMovement" node_paths=PackedStringArray("shooter") instance=ExtResource("6_ywhcy")]
 spawn_node = ExtResource("7_h7yqj")

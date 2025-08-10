@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cuvpnywj3k8dn"]
+[gd_scene load_steps=15 format=3 uid="uid://cuvpnywj3k8dn"]
 
 [ext_resource type="Script" uid="uid://dorx0jiwc6g7d" path="res://Scenes/world.gd" id="1_8j60k"]
 [ext_resource type="PackedScene" uid="uid://v57cfg0brij1" path="res://Objects/player.tscn" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://q1tv8vnu23cr" path="res://Scenes/stratum.tscn" id="2_fo5ed"]
+[ext_resource type="PackedScene" uid="uid://b1t5c22a23dnv" path="res://Scenes/stratum1.tscn" id="3_0fj1v"]
 [ext_resource type="Script" uid="uid://cmk344sm1v1xp" path="res://Scenes/time_ui.gd" id="5_fo5ed"]
 [ext_resource type="Texture2D" uid="uid://rfhirrb4siqd" path="res://Art/sunspr.png" id="6_5ukr8"]
 [ext_resource type="Texture2D" uid="uid://bfy5wnagg6t6s" path="res://Art/moonspr.png" id="7_o06y3"]
@@ -64,7 +65,7 @@ _data = {
 
 [node name="World" type="Node2D" groups=["world"]]
 script = ExtResource("1_8j60k")
-strata = Array[PackedScene]([ExtResource("2_fo5ed"), ExtResource("2_fo5ed"), ExtResource("2_fo5ed"), ExtResource("2_fo5ed"), ExtResource("2_fo5ed"), ExtResource("2_fo5ed")])
+strata = Array[PackedScene]([ExtResource("2_fo5ed"), ExtResource("3_0fj1v"), ExtResource("2_fo5ed"), ExtResource("2_fo5ed"), ExtResource("2_fo5ed"), ExtResource("2_fo5ed")])
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_a02cp")]
 position = Vector2(-1, -74)

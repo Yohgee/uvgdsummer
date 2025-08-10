@@ -9,5 +9,5 @@
 [resource]
 script = ExtResource("2_2yxhy")
 pools = Array[ExtResource("1_ai3n1")]([ExtResource("2_l5hta"), ExtResource("3_qkaru"), ExtResource("4_5ddq2")])
-chances = Array[float]([0.7, 0.25, 0.05])
+chances = Array[float]([0.75, 0.24, 0.01])
 metadata/_custom_type_script = "uid://crjy1ln2kvdwa"

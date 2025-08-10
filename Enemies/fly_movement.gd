@@ -9,6 +9,7 @@ class_name FlyMovement
 @export var rand_ratio := 0.2
 @export var follow_accel := 0.2
 @export var stay_accel := 0.1
+@export var spr : Sprite2D
 
 @onready var player : Player = get_tree().get_first_node_in_group("player")
 
@@ -21,6 +22,9 @@ func _ready() -> void:
 	range += randf_range(-range_diff, range_diff)
 
 func _physics_process(delta: float) -> void:
+	if player:
+		spr.flip_h = player.global_position.x > global_position.x
+	
 	var d := global_position.distance_to(player.global_position)
 	osc = wrapf(osc + delta * 3, 0, 2 * PI)
 	if d > range:
