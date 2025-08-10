@@ -68,6 +68,7 @@ script = ExtResource("1_ko8xe")
 hp_bar = NodePath("HealthBar")
 di = NodePath("DropItem")
 statuses = NodePath("HBoxContainer")
+max_health = 50
 metadata/_custom_type_script = "uid://pfrh7u2ltx2"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -105,14 +106,14 @@ spr = NodePath("../Sprite2D")
 spawn_node = ExtResource("7_ipuf6")
 spawn_res = SubResource("Resource_o35rc")
 shooter = NodePath("../..")
-spawn_delay = 1.0
+spawn_delay = 3.0
 aimed = true
 
 [node name="Shooter" parent="FlyMovement" node_paths=PackedStringArray("shooter") instance=ExtResource("6_q8wgv")]
 spawn_node = ExtResource("10_4l61o")
 spawn_res = SubResource("Resource_q8wgv")
 shooter = NodePath("../..")
-spawn_delay = 5.0
+spawn_delay = 9.0
 
 [node name="DropItem" type="Node2D" parent="."]
 script = ExtResource("12_vccpv")

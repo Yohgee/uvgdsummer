@@ -22,7 +22,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is not Player: return
-	if !is_on_floor(): return
 	
 	p = body as Player
 

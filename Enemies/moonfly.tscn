@@ -29,6 +29,7 @@ script = ExtResource("1_6a325")
 hp_bar = NodePath("HealthBar")
 statuses = NodePath("HBoxContainer")
 base_speed = 150
+max_health = 50
 metadata/_custom_type_script = "uid://pfrh7u2ltx2"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -67,7 +68,7 @@ spawn_node = ExtResource("7_h7yqj")
 spawn_res = SubResource("Resource_7a6u2")
 shooter = NodePath("../..")
 start_delay = 0.1
-spawn_delay = 1.0
+spawn_delay = 2.0
 aimed = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
