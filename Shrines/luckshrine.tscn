@@ -53,6 +53,6 @@ metadata/_custom_type_script = "uid://c0s05wxd5ynwn"
 
 [node name="EnemySpawnShrine" type="Node2D" parent="LuckyInteract"]
 script = ExtResource("5_2quh1")
-main_enemy = Array[PackedScene]([ExtResource("7_j8qd7")])
+main_enemy = Array[PackedScene]([ExtResource("7_j8qd7"), ExtResource("7_j8qd7")])
 adds = Array[PackedScene]([ExtResource("8_7eway")])
 metadata/_custom_type_script = "uid://sp8eblnulxy2"

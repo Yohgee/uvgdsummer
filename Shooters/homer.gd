@@ -17,7 +17,11 @@ func _physics_process(delta: float) -> void:
 func new_target(t : Entity, dmg : float, procc : float):
 	target = null
 	if !target_q.is_empty():
-		target = target_q.pop_front()
+		if target_q[0]:
+			target = target_q.pop_front()
+		else:
+			target_q.pop_front()
+			new_target(null, 0, 0)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body == bullet.shooter: return

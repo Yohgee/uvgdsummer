@@ -17,6 +17,8 @@ func shoot():
 	
 	rotation_degrees -= spread_angle/2
 	var dr : float = spread_angle/(spawn_num - 1)
+	if spread_angle == 360:
+		dr = spread_angle/(spawn_num)
 	
 	for i in spawn_num:
 		var node : Node2D = spawn_node.instantiate()

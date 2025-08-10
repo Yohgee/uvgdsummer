@@ -11,10 +11,13 @@ signal hit(target : Entity, dmg : float, procc : float)
 var velocity : Vector2 = Vector2.ZERO
 var acceleration : Vector2 = Vector2.ZERO
 var shooter : Entity
+var dm : float = 1
 
 func _ready() -> void:
 	if !body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)
+	if shooter:
+		dm = shooter.damage_mult
 
 func _process(delta: float) -> void:
 	position += velocity * delta
@@ -37,9 +40,9 @@ func _on_body_entered(body: Node2D) -> void:
 		body = body as Entity
 		hit.emit(body, damage, proc)
 		if shooter:
-			body.take_damage(shooter, damage, proc)
+			body.take_damage(shooter, damage * dm , proc)
 		else:
-			body.take_damage(null, damage, proc)
+			body.take_damage(null, damage * dm, proc)
 		pierce -= 1
 		if pierce > 0: return
 	

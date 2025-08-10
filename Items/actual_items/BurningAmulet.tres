@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BurningAmulet" load_steps=4 format=3 uid="uid://dea12ueo2ycw3"]
+
+[ext_resource type="Script" uid="uid://bj1bn1ji0glfx" path="res://Items/burningamulet.gd" id="1_be2vp"]
+[ext_resource type="Resource" uid="uid://dtmkvm7ichikc" path="res://Items/actual_items/burn.tres" id="1_ihrdg"]
+[ext_resource type="Texture2D" uid="uid://bxhx683pr3wq6" path="res://Art/items/burningamulet.png" id="2_tewu1"]
+
+[resource]
+script = ExtResource("1_be2vp")
+effect = ExtResource("1_ihrdg")
+name = "Burning Amulet"
+desc = "10% (+10% per stack) chance on hit to apply burn durning day."
+texture = ExtResource("2_tewu1")
+status_effect = false
+metadata/_custom_type_script = "uid://bj1bn1ji0glfx"

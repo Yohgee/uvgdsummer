@@ -1,7 +1,7 @@
 extends Item
-class_name DmgOnHit
+class_name BurningAmulet
 
-@export var dmghit : float = 2
+@export var effect : Item
 
 func get_item(e : Entity):
 	super.get_item(e)
@@ -9,5 +9,7 @@ func get_item(e : Entity):
 		e.on_hit.connect(on_hit)
 
 func on_hit(a : Entity, t : Entity, dmg : float, proc : float):
-	if WorldTime.get_moon():
-		t.take_damage(a, (dmghit + (2 * (stack - 1))) * proc * a.damage_mult, 0.1)
+	if !WorldTime.get_sun(): return
+	var r := randf()
+	if r <= (0.1 + 0.1 * (stack - 1)) * proc:
+		t.get_item(effect)

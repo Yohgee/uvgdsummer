@@ -35,6 +35,7 @@ var min_wave_time : float = 15
 
 func _ready() -> void:
 	name_label.text = "Stratum " + str(level) + ": " + level_name
+	rooms = rooms.duplicate()
 	border.default_color = border_colour
 	border.add_point(Vector2(0, -(room_height * (stratum_height + 1))))
 	border.add_point(Vector2(0, 0))
@@ -92,6 +93,7 @@ func spawn_wave():
 func spawn_enemy(s : PackedScene):
 	var p : Player = get_tree().get_first_node_in_group("player")
 	var e : Entity = s.instantiate()
+	e.set("level", world.level)
 	add_child(e)
 	e.global_position = p.global_position + Vector2(0, -500 + randf_range(-200, 100)).rotated(randf_range(-PI/2, PI/2))
 

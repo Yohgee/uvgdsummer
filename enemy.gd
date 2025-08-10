@@ -4,7 +4,13 @@ class_name Enemy
 @export var hp_bar : TextureProgressBar
 @export var di : DropItem
 @export var statuses : HBoxContainer
+var level : int = 0
 const STATUS_TEXTURE = preload("res://Items/status_texture.tscn")
+
+func _ready() -> void:
+	super._ready()
+	max_health *= 1.0 + float(level)/10.0
+	damage_mult = 1.0 + float(level)/5.0
 
 func set_health(nv):
 	var d : float = health - nv

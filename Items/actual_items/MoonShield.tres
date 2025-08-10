@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MoonShield" load_steps=3 format=3 uid="uid://5u3a02s82c6a"]
+
+[ext_resource type="Script" uid="uid://b4l8l2cxooa85" path="res://Items/moonplateshield.gd" id="1_n1gmu"]
+[ext_resource type="Texture2D" uid="uid://bvknwkxh1jwjv" path="res://Art/items/moonshield.png" id="2_e7qi8"]
+
+[resource]
+script = ExtResource("1_n1gmu")
+name = "Moonplate Shield"
+desc = "When taking damage at night, gain 20% (+20% per stack) of damage recieved as charge."
+texture = ExtResource("2_e7qi8")
+status_effect = false
+metadata/_custom_type_script = "uid://b4l8l2cxooa85"

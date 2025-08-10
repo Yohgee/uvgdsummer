@@ -13,6 +13,7 @@ signal on_kill(attacker : Entity, target : Entity, damage : float, proc : float)
 
 var status_effects : Array[Item] = []
 var speed_multiplier : float = 1.0
+var damage_mult : float = 1.0
 
 @onready var health = max_health: set = set_health
 
@@ -28,8 +29,8 @@ func get_item(i : Item):
 		if t.name == i.name:
 			t.get_item(self)
 			return t
-	i.get_item(self)
 	if !i.status_effect:
+		i.get_item(self)
 		items.append(i)
 	else:
 		for t in status_effects:
@@ -37,6 +38,7 @@ func get_item(i : Item):
 				t.get_item(self)
 				update_status_effects(t, true)
 				return t
+		i.get_item(self)
 		status_effects.append(i)
 		update_status_effects(i, true)
 	return i

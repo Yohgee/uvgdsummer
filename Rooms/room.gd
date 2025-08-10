@@ -4,7 +4,7 @@ class_name Room
 @onready var generation_points: Node2D = $GenerationPoints
 
 @export var structures : Array[StructureRes]
-@export var struct_spawn_ratio : float = 0.3
+@export var struct_spawn_ratio : float = 0.2
 const STAIRS = preload("res://Shrines/stairs.tscn")
 
 var gp : Array[Node2D]
@@ -16,6 +16,7 @@ func _ready() -> void:
 	gp.shuffle()
 
 func generate_stairs():
+	if gp.is_empty(): return
 	var p : Node2D = gp.pop_front()
 	var stairs : Shrine = STAIRS.instantiate()
 	add_child(stairs)

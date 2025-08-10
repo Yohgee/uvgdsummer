@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PropertyChanger" load_steps=3 format=3 uid="uid://bjpfy24u3u8yk"]
+
+[ext_resource type="Script" uid="uid://dveo3mqf0r3i3" path="res://Items/property_changer.gd" id="1_u6yce"]
+[ext_resource type="Texture2D" uid="uid://55w23c3wi2ee" path="res://Art/items/skeletalwings.png" id="2_0x20g"]
+
+[resource]
+script = ExtResource("1_u6yce")
+value = 25.0
+property = "flight_speed"
+name = "Skeletal Wings"
+desc = "Gain 25 (+25 per stack) flight speed."
+texture = ExtResource("2_0x20g")
+status_effect = false
+metadata/_custom_type_script = "uid://dveo3mqf0r3i3"

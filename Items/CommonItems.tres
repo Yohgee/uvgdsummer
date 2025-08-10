@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemPool" load_steps=11 format=3 uid="uid://fq4ye61425ly"]
+[gd_resource type="Resource" script_class="ItemPool" load_steps=14 format=3 uid="uid://fq4ye61425ly"]
 
 [ext_resource type="Script" uid="uid://cxa12ftuo1c3c" path="res://Items/item.gd" id="1_aslbr"]
 [ext_resource type="Resource" uid="uid://dwtvoyf2nnsg5" path="res://Items/actual_items/EclipseTreads.tres" id="2_5ew7a"]
@@ -10,8 +10,11 @@
 [ext_resource type="Resource" uid="uid://dgq8rlajyrdp4" path="res://Items/actual_items/VampireFangs.tres" id="7_fgo00"]
 [ext_resource type="Resource" uid="uid://moytvlv0o6bf" path="res://Items/actual_items/ChargeCrystal.tres" id="8_icff4"]
 [ext_resource type="Resource" uid="uid://cqakv7vksdwcm" path="res://Items/actual_items/WandScope.tres" id="9_bri32"]
+[ext_resource type="Resource" uid="uid://5u3a02s82c6a" path="res://Items/actual_items/MoonShield.tres" id="10_wibtl"]
+[ext_resource type="Resource" uid="uid://dea12ueo2ycw3" path="res://Items/actual_items/BurningAmulet.tres" id="11_j6fi5"]
+[ext_resource type="Resource" uid="uid://bjpfy24u3u8yk" path="res://Items/actual_items/SkeletalWings.tres" id="12_0nn4s"]
 
 [resource]
 script = ExtResource("2_obhoe")
-item_pool = Array[ExtResource("1_aslbr")]([ExtResource("2_5ew7a"), ExtResource("3_saf36"), ExtResource("4_vybkg"), ExtResource("5_saf36"), ExtResource("6_vybkg"), ExtResource("7_fgo00"), ExtResource("8_icff4"), ExtResource("9_bri32")])
+item_pool = Array[ExtResource("1_aslbr")]([ExtResource("2_5ew7a"), ExtResource("3_saf36"), ExtResource("4_vybkg"), ExtResource("5_saf36"), ExtResource("6_vybkg"), ExtResource("7_fgo00"), ExtResource("8_icff4"), ExtResource("9_bri32"), ExtResource("10_wibtl"), ExtResource("11_j6fi5"), ExtResource("12_0nn4s")])
 metadata/_custom_type_script = "uid://dlbgqgtalmu1i"

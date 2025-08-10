@@ -30,7 +30,6 @@ metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
 [node name="Room" type="Node2D"]
 script = ExtResource("1_7cx0i")
 structures = Array[ExtResource("2_ibeio")]([SubResource("Resource_lvf57"), SubResource("Resource_i7vns"), SubResource("Resource_guw1q")])
-struct_spawn_ratio = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_7cx0i")

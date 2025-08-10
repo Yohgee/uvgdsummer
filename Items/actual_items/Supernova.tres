@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="Supernova" load_steps=8 format=3 uid="uid://bfdq0kslralnu"]
+
+[ext_resource type="Script" uid="uid://dffyrkj5y36t5" path="res://Shooters/bullet_res.gd" id="1_0b0bw"]
+[ext_resource type="Script" uid="uid://dc76ha2v8wa6y" path="res://Items/supernova.gd" id="1_0iovv"]
+[ext_resource type="Script" uid="uid://cwrem7gbtwbal" path="res://Shooters/spread_res.gd" id="2_aob7x"]
+[ext_resource type="Texture2D" uid="uid://bectr35qv7hb" path="res://Art/items/supernova.png" id="2_mnaj5"]
+[ext_resource type="PackedScene" uid="uid://ckyjrvuhnyubl" path="res://Objects/player_bullet.tscn" id="3_8kll1"]
+
+[sub_resource type="Resource" id="Resource_0gjqe"]
+script = ExtResource("1_0b0bw")
+damage = 10.0
+proc = 1.0
+lifetime = 0.2
+velocity = Vector2(450, 0)
+acceleration = Vector2(0, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_8kll1"]
+script = ExtResource("2_aob7x")
+spread_angle = 360.0
+spawn_num = 3
+spawn_node = ExtResource("3_8kll1")
+start_delay = 0.0
+spawn_delay = 0.1
+velocity = Vector2(0, 0)
+acceleration = Vector2(0, 0)
+fix_accel = false
+offset = Vector2(0, 0)
+aimed = false
+num_shots = 1
+metadata/_custom_type_script = "uid://cwrem7gbtwbal"
+
+[resource]
+script = ExtResource("1_0iovv")
+spread_res = SubResource("Resource_8kll1")
+bulres = SubResource("Resource_0gjqe")
+name = "Pocket Supernova"
+desc = "Enemies explode on kill dealing 100% (+50% per stack) damage."
+texture = ExtResource("2_mnaj5")
+status_effect = false
+metadata/_custom_type_script = "uid://dc76ha2v8wa6y"

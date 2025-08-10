@@ -50,7 +50,6 @@ _data = {
 }
 
 [node name="Stratum" type="Node2D"]
-modulate = Color(0.838862, 0.717954, 0.652417, 1)
 script = ExtResource("1_70l7v")
 level = 1
 level_name = "Dwellings"

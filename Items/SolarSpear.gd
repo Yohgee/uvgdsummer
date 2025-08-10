@@ -19,7 +19,7 @@ func on_hit(a : Entity, t : Entity, dmg : float, proc : float):
 			var w : World = a.get_tree().get_first_node_in_group("world")
 			w.stratum.call_deferred("add_child", bullet)
 			bullet.shooter = a
-			bullet.damage = dmg * 1.5
+			bullet.damage = dmg * 1.5 * a.damage_mult
 			var p = a.get("bullet_pierce")
 			var p_p = 0
 			if p:

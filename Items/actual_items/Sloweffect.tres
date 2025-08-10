@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SlowEffect" load_steps=3 format=3 uid="uid://b15h2deam35uj"]
+
+[ext_resource type="Script" uid="uid://mcaih5r07468" path="res://Items/slow.gd" id="1_xmc18"]
+[ext_resource type="Texture2D" uid="uid://bbru53t4n7qs2" path="res://Art/items/slow.png" id="2_erf3m"]
+
+[resource]
+script = ExtResource("1_xmc18")
+name = "slow"
+desc = ""
+texture = ExtResource("2_erf3m")
+status_effect = true
+metadata/_custom_type_script = "uid://mcaih5r07468"

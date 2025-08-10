@@ -2,6 +2,7 @@ extends Item
 class_name GiantSnowball
 
 const SNOWBUILLET = preload("res://Items/snowbuillet.tscn")
+@export var sloweffect : Item
 
 func get_item(e : Entity):
 	super.get_item(e)
@@ -11,7 +12,7 @@ func get_item(e : Entity):
 func on_hit(a : Entity, t : Entity, dmg : float, proc : float):
 	if a is Player:
 		var r := randf()
-		if r <= (0.15 + (0.01 * (stack - 1))) * proc * 100:
+		if r <= (0.15 + (0.01 * (stack - 1))) * proc:
 			var angle := a.get_angle_to(a.get_global_mouse_position())
 			var offset := Vector2(16, 0).rotated(angle)
 			var bullet : Bullet = SNOWBUILLET.instantiate()
@@ -26,5 +27,5 @@ func on_hit(a : Entity, t : Entity, dmg : float, proc : float):
 			bullet.hit.connect(a.get_hit)
 			bullet.hit.connect(apply_slow)
 
-func apply_slow(a : Entity, t : Entity, dmg : float, proc : float):
-	pass
+func apply_slow(t : Entity, dmg : float, proc : float):
+	t.get_item(sloweffect)
