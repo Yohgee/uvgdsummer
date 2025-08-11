@@ -11,9 +11,6 @@ func _ready() -> void:
 	super._ready()
 	max_health *= WorldTime.diff_mult + float(level) * 0.8
 	damage_mult = WorldTime.diff_mult + float(level) * 0.4
-	print(max_health)
-	print(damage_mult)
-	print(WorldTime.diff_mult)
 
 func set_health(nv):
 	var d : float = health - nv
@@ -39,7 +36,6 @@ func update_status_effects(i : Item, g : bool):
 			if g:
 				c.get_item()
 			else:
-				print("surely")
 				c.remove_item()
 			return
 	var nc := STATUS_TEXTURE.instantiate()

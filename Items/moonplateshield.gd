@@ -11,3 +11,4 @@ func on_damage(a : Entity, t : Entity, dmg : float, proc : float):
 	if WorldTime.get_moon():
 		if t is Player:
 			t.charge += dmg * 0.2 * (stack)
+			t.take_damage(null, -dmg * 0.1, 0.0)

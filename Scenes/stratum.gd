@@ -3,6 +3,7 @@ class_name Stratum
 
 @export var level : int = 0
 @export var level_name : String = "Foundation"
+@export var music : AudioStreamPlayer
 
 @export_category("Level Generation")
 

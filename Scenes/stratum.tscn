@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://q1tv8vnu23cr"]
+[gd_scene load_steps=25 format=3 uid="uid://q1tv8vnu23cr"]
 
 [ext_resource type="Script" uid="uid://dnp572suufbfy" path="res://Scenes/stratum.gd" id="1_nj1ie"]
 [ext_resource type="PackedScene" uid="uid://dnymaathjos8a" path="res://Rooms/s0r0.tscn" id="3_6ndda"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://pprf4y56w3g0" path="res://Enemies/lunardancer.tscn" id="15_b4hps"]
 [ext_resource type="PackedScene" uid="uid://b6h6g5i3us7a2" path="res://Enemies/greatermoonfly.tscn" id="16_xrc50"]
 [ext_resource type="PackedScene" uid="uid://d3ykdcbp4em7f" path="res://Enemies/elitelunardancer.tscn" id="17_b4hps"]
+[ext_resource type="AudioStream" uid="uid://lromvt530313" path="res://Art/music/gamesongseven (1).mp3" id="18_p4vrw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ukwj"]
 
@@ -63,8 +64,9 @@ _data = {
 &"name_fade": SubResource("Animation_6ndda")
 }
 
-[node name="Stratum" type="Node2D"]
+[node name="Stratum" type="Node2D" node_paths=PackedStringArray("music")]
 script = ExtResource("1_nj1ie")
+music = NodePath("Music")
 rooms = Array[PackedScene]([ExtResource("3_6ndda"), ExtResource("3_df4gb"), ExtResource("4_lsyk8"), ExtResource("5_m6prk"), ExtResource("6_3oln1"), ExtResource("7_o1pkm"), ExtResource("8_26p27"), ExtResource("9_xrc50")])
 sun_enemies = Array[PackedScene]([ExtResource("10_m6prk"), ExtResource("11_3oln1"), ExtResource("12_26p27"), ExtResource("13_xrc50")])
 sun_credits = Array[int]([7, 13, 60, 85])
@@ -118,3 +120,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 42
 text = "Stratum 0: Level Name"
 horizontal_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_p4vrw")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

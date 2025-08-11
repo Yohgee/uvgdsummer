@@ -146,6 +146,7 @@ script = ExtResource("12_iekps")
 spawn_node = ExtResource("6_0ilup")
 spawn_res = SubResource("Resource_283bn")
 shooter = NodePath("../..")
+start_delay = 1.5
 spawn_delay = 1.5
 metadata/_custom_type_script = "uid://d4ngtdediwo85"
 

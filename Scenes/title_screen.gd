@@ -9,6 +9,7 @@ extends Control
 
 func _ready() -> void:
 	change_diff(medium, 1.0)
+	WorldTime.reset()
 
 func change_diff(b : Button, d : float):
 	WorldTime.diff_mult = d
@@ -44,3 +45,7 @@ func _on_credits_pressed() -> void:
 
 func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
+
+
+func _on_muse_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0, value)

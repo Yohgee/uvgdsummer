@@ -11,6 +11,7 @@ var time = 0.2
 func _ready() -> void:
 	if damage < 0:
 		label.modulate = Color.AQUAMARINE
+	else:
 		hit.play()
 	damage = abs(damage)
 	label.text = "%.1f" % damage

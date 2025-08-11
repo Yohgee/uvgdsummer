@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dveiis36avn1f"]
+[gd_scene load_steps=8 format=3 uid="uid://dveiis36avn1f"]
 
 [ext_resource type="Script" uid="uid://balxtbt3t1din" path="res://Scenes/title_screen.gd" id="1_klylv"]
 [ext_resource type="AudioStream" uid="uid://bsus46kturq8t" path="res://Art/click.wav" id="2_p3fck"]
 [ext_resource type="Texture2D" uid="uid://ljuvr1uqdssd" path="res://Art/tutorial.png" id="3_4gxqj"]
+[ext_resource type="AudioStream" uid="uid://01mgsw1vs3jr" path="res://Art/music/gamesongtwo.mp3" id="3_6vd4x"]
 [ext_resource type="Texture2D" uid="uid://bews1y68odhps" path="res://Art/PXL_20250810_003051900.jpg" id="4_twnyg"]
 [ext_resource type="Texture2D" uid="uid://fm6lowqixpn" path="res://Art/Screenshot_20250809-175205.png" id="5_55kwv"]
 [ext_resource type="Texture2D" uid="uid://c7bb5ey8ke8qa" path="res://Art/titlescreenthing.png" id="6_12m1t"]
@@ -20,7 +21,7 @@ script = ExtResource("1_klylv")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.1
+anchor_top = 0.05
 anchor_right = 0.1
 anchor_bottom = 0.1
 offset_right = 445.0
@@ -94,14 +95,43 @@ theme_override_font_sizes/font_size = 32
 text = "Volume:"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-min_value = -20.0
-max_value = 20.0
+
+[node name="Master" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Master"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 50.0
+value = -10.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Music"
+
+[node name="muse" type="HSlider" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 50.0
 value = -10.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_p3fck")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6vd4x")
+autoplay = true
+parameters/looping = true
 
 [node name="Tutorial" type="Sprite2D" parent="."]
 visible = false
@@ -176,4 +206,5 @@ texture = ExtResource("6_12m1t")
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Medium" to="." method="_on_medium_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/HARD" to="." method="_on_hard_pressed"]
 [connection signal="pressed" from="VBoxContainer/credits" to="." method="_on_credits_pressed"]
-[connection signal="value_changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer3/muse" to="." method="_on_muse_value_changed"]

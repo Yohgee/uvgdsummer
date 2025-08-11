@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bn1l4bj2ot0x6"]
+[gd_scene load_steps=16 format=3 uid="uid://bn1l4bj2ot0x6"]
 
 [ext_resource type="Script" uid="uid://di24gbtq4oaw0" path="res://Shrines/shrine.gd" id="1_s4d3y"]
 [ext_resource type="Texture2D" uid="uid://c0d260nw38cl7" path="res://Art/luckyshrine.png" id="2_s4d3y"]
@@ -8,6 +8,12 @@
 [ext_resource type="Resource" uid="uid://cgepdqldd3icl" path="res://Items/DefaultPools.tres" id="5_w2a1i"]
 [ext_resource type="PackedScene" uid="uid://b6h6g5i3us7a2" path="res://Enemies/greatermoonfly.tscn" id="7_j8qd7"]
 [ext_resource type="PackedScene" uid="uid://bn5eej07gt80t" path="res://Enemies/moonfly.tscn" id="8_7eway"]
+[ext_resource type="PackedScene" uid="uid://d3ykdcbp4em7f" path="res://Enemies/elitelunardancer.tscn" id="8_vg14g"]
+[ext_resource type="PackedScene" uid="uid://b7h30hlfy6q14" path="res://Enemies/elitesunbat.tscn" id="9_rpb7k"]
+[ext_resource type="PackedScene" uid="uid://cmh2ivwlfigbl" path="res://Enemies/elitesunwarrior.tscn" id="10_6wr5y"]
+[ext_resource type="PackedScene" uid="uid://pprf4y56w3g0" path="res://Enemies/lunardancer.tscn" id="12_16mb1"]
+[ext_resource type="PackedScene" uid="uid://c6dwqnkb6x0bx" path="res://Enemies/sunbat.tscn" id="13_qcheg"]
+[ext_resource type="PackedScene" uid="uid://dyav3bbvbgjcb" path="res://Enemies/sunwarrior.tscn" id="14_cyvjm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1whm6"]
 size = Vector2(32, 60)
@@ -53,6 +59,6 @@ metadata/_custom_type_script = "uid://c0s05wxd5ynwn"
 
 [node name="EnemySpawnShrine" type="Node2D" parent="LuckyInteract"]
 script = ExtResource("5_2quh1")
-main_enemy = Array[PackedScene]([ExtResource("7_j8qd7"), ExtResource("7_j8qd7")])
-adds = Array[PackedScene]([ExtResource("8_7eway")])
+main_enemy = Array[PackedScene]([ExtResource("7_j8qd7"), ExtResource("8_vg14g"), ExtResource("9_rpb7k"), ExtResource("10_6wr5y")])
+adds = Array[PackedScene]([ExtResource("8_7eway"), ExtResource("12_16mb1"), ExtResource("13_qcheg"), ExtResource("14_cyvjm")])
 metadata/_custom_type_script = "uid://sp8eblnulxy2"

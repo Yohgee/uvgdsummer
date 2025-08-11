@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	else:
 		WorldTime.add_time(delta * 2)
 	if Input.is_action_just_pressed("test"):
-		next_level()
+		pass
 
 func next_level():
 	for c in get_children():

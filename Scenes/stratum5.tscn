@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://h0aefh015aao"]
+[gd_scene load_steps=18 format=3 uid="uid://h0aefh015aao"]
 
 [ext_resource type="Script" uid="uid://dnp572suufbfy" path="res://Scenes/stratum.gd" id="1_k6fhy"]
 [ext_resource type="PackedScene" uid="uid://dg63y6051clq2" path="res://Rooms/s5r0.tscn" id="2_oke8f"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b6h6g5i3us7a2" path="res://Enemies/greatermoonfly.tscn" id="7_ktme7"]
 [ext_resource type="Script" uid="uid://cj3aggqnxii7y" path="res://Scenes/win_fade.gd" id="7_oke8f"]
 [ext_resource type="PackedScene" uid="uid://d4b81mn8us06s" path="res://Enemies/finalboss.tscn" id="8_2ydcr"]
+[ext_resource type="AudioStream" uid="uid://cb8mdmdp0fd6m" path="res://Art/music/gamesongfourwithdrums-002.mp3" id="8_g20oy"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ukwj"]
 
@@ -90,10 +91,11 @@ _data = {
 &"fade": SubResource("Animation_oke8f")
 }
 
-[node name="Stratum" type="Node2D"]
+[node name="Stratum" type="Node2D" node_paths=PackedStringArray("music")]
 script = ExtResource("1_k6fhy")
 level = 5
 level_name = "The Moon"
+music = NodePath("Music")
 rooms = Array[PackedScene]([ExtResource("2_oke8f")])
 stratum_width = 1
 stratum_height = 1
@@ -177,6 +179,12 @@ script = ExtResource("7_oke8f")
 libraries = {
 &"": SubResource("AnimationLibrary_g20oy")
 }
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_g20oy")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="boss_defeated" from="Mithrix" to="." method="cleanse"]
 [connection signal="boss_defeated" from="Mithrix" to="CanvasLayer2/WinFade" method="win"]

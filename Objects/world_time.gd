@@ -13,6 +13,16 @@ var damage_taken : float = 0
 var items_collected : int = 0
 var enemies_killed : int = 0
 
+func reset():
+	time = 0
+	sun = true
+	moon = false
+	eclipse = false
+	damage_dealt = 0
+	damage_taken = 0
+	items_collected = 0
+	enemies_killed = 0
+
 func get_sun() -> bool:
 	return sun or eclipse
 

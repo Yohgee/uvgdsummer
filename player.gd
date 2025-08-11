@@ -184,4 +184,5 @@ func get_hit(target : Entity, damage : float, proc : float):
 
 func take_damage(attacker : Entity, damage : float, proc : float):
 	super.take_damage(attacker, damage, proc)
-	WorldTime.damage_taken += damage
+	if damage > 0:
+		WorldTime.damage_taken += damage

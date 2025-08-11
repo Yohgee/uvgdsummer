@@ -106,6 +106,7 @@ spr = NodePath("../Sprite2D")
 spawn_node = ExtResource("7_ipuf6")
 spawn_res = SubResource("Resource_o35rc")
 shooter = NodePath("../..")
+start_delay = 3.0
 spawn_delay = 3.0
 aimed = true
 
@@ -113,6 +114,7 @@ aimed = true
 spawn_node = ExtResource("10_4l61o")
 spawn_res = SubResource("Resource_q8wgv")
 shooter = NodePath("../..")
+start_delay = 9.0
 spawn_delay = 9.0
 
 [node name="DropItem" type="Node2D" parent="."]

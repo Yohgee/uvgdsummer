@@ -92,7 +92,7 @@ spr = NodePath("../Sprite2D")
 spawn_node = ExtResource("7_sx300")
 spawn_res = SubResource("Resource_6vg1f")
 shooter = NodePath("../..")
-start_delay = 0.1
+start_delay = 1.0
 spawn_delay = 1.0
 aimed = true
 
@@ -103,7 +103,7 @@ spawn_num = 4
 spawn_node = ExtResource("7_sx300")
 spawn_res = SubResource("Resource_3bwb4")
 shooter = NodePath("../..")
-start_delay = 0.1
+start_delay = 2.0
 spawn_delay = 2.5
 fix_accel = true
 

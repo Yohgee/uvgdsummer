@@ -155,7 +155,7 @@ spr = NodePath("../Sprite2D")
 spawn_node = ExtResource("7_6t53c")
 spawn_res = SubResource("Resource_cwnmk")
 shooter = NodePath("../..")
-start_delay = 0.1
+start_delay = 1.0
 spawn_delay = 1.0
 aimed = true
 
@@ -164,7 +164,7 @@ script = ExtResource("12_6c8jd")
 spawn_node = ExtResource("13_a7s06")
 spawn_res = SubResource("Resource_78kul")
 shooter = NodePath("../..")
-start_delay = 0.1
+start_delay = 2.0
 spawn_delay = 4.0
 metadata/_custom_type_script = "uid://d4ngtdediwo85"
 

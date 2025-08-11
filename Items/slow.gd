@@ -7,8 +7,6 @@ func get_item(e : Entity):
 	super.get_item(e)
 	end_timer = 0
 	e.speed_multiplier *= 0.75
-	print(e.speed_multiplier)
-	print(stack)
 
 func tick(e : Entity, delta : float):
 	end_timer += delta

@@ -24,4 +24,4 @@ vertical_alignment = 1
 
 [node name="hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ahe31")
-volume_db = -16.865
+volume_db = -2.0
