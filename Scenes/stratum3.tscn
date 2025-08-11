@@ -1,0 +1,123 @@
+[gd_scene load_steps=22 format=3 uid="uid://diaqvp7a0u1hc"]
+
+[ext_resource type="Script" uid="uid://dnp572suufbfy" path="res://Scenes/stratum.gd" id="1_fhl3r"]
+[ext_resource type="PackedScene" uid="uid://0rawnlar8opj" path="res://Rooms/s3r0.tscn" id="2_fhl3r"]
+[ext_resource type="PackedScene" uid="uid://cjhdvkefsjf7c" path="res://Rooms/s3r1.tscn" id="3_fhty2"]
+[ext_resource type="PackedScene" uid="uid://b3qv7qulwiyxj" path="res://Rooms/s3r2.tscn" id="4_oejyc"]
+[ext_resource type="PackedScene" uid="uid://cvjic6n24bcg1" path="res://Rooms/s3r3.tscn" id="5_0n8l6"]
+[ext_resource type="PackedScene" uid="uid://c23bh5jhiig72" path="res://Rooms/s3r4.tscn" id="6_u8sso"]
+[ext_resource type="PackedScene" uid="uid://bm5ect1rq0ptq" path="res://Rooms/s3r5.tscn" id="7_h7e5w"]
+[ext_resource type="PackedScene" uid="uid://c6dwqnkb6x0bx" path="res://Enemies/sunbat.tscn" id="8_fhty2"]
+[ext_resource type="PackedScene" uid="uid://bn5eej07gt80t" path="res://Enemies/moonfly.tscn" id="8_jg31f"]
+[ext_resource type="PackedScene" uid="uid://b6h6g5i3us7a2" path="res://Enemies/greatermoonfly.tscn" id="9_3ca1k"]
+[ext_resource type="PackedScene" uid="uid://dyav3bbvbgjcb" path="res://Enemies/sunwarrior.tscn" id="9_oejyc"]
+[ext_resource type="PackedScene" uid="uid://b7h30hlfy6q14" path="res://Enemies/elitesunbat.tscn" id="10_u8sso"]
+[ext_resource type="PackedScene" uid="uid://cmh2ivwlfigbl" path="res://Enemies/elitesunwarrior.tscn" id="11_h7e5w"]
+[ext_resource type="PackedScene" uid="uid://pprf4y56w3g0" path="res://Enemies/lunardancer.tscn" id="13_rc7ry"]
+[ext_resource type="PackedScene" uid="uid://d3ykdcbp4em7f" path="res://Enemies/elitelunardancer.tscn" id="15_jg31f"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ukwj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ndda"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_df4gb"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="Animation" id="Animation_df4gb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/NameLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6ndda"]
+resource_name = "name_fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/NameLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_df4gb"]
+_data = {
+&"RESET": SubResource("Animation_df4gb"),
+&"name_fade": SubResource("Animation_6ndda")
+}
+
+[node name="Stratum" type="Node2D"]
+script = ExtResource("1_fhl3r")
+level = 3
+level_name = "Sanctum"
+rooms = Array[PackedScene]([ExtResource("2_fhl3r"), ExtResource("3_fhty2"), ExtResource("4_oejyc"), ExtResource("5_0n8l6"), ExtResource("6_u8sso"), ExtResource("7_h7e5w")])
+border_colour = Color(1, 0.933333, 0.513726, 1)
+sun_enemies = Array[PackedScene]([ExtResource("8_fhty2"), ExtResource("9_oejyc"), ExtResource("10_u8sso"), ExtResource("11_h7e5w")])
+sun_credits = Array[int]([7, 13, 33, 36])
+moon_enemies = Array[PackedScene]([ExtResource("8_jg31f"), ExtResource("13_rc7ry"), ExtResource("9_3ca1k"), ExtResource("15_jg31f")])
+moon_credits = Array[int]([12, 16, 28, 33])
+max_wave_time = 18.0
+min_wave_time = 8.0
+
+[node name="Base" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base"]
+shape = SubResource("WorldBoundaryShape2D_3ukwj")
+
+[node name="Left" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+shape = SubResource("WorldBoundaryShape2D_6ndda")
+
+[node name="Right" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+shape = SubResource("WorldBoundaryShape2D_df4gb")
+
+[node name="Border" type="Line2D" parent="."]
+width = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_df4gb")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 42
+text = "Stratum 0: Level Name"
+horizontal_alignment = 1

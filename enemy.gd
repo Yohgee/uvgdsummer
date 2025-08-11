@@ -9,8 +9,11 @@ const STATUS_TEXTURE = preload("res://Items/status_texture.tscn")
 
 func _ready() -> void:
 	super._ready()
-	max_health *= 1.0 + float(level) * 0.8
-	damage_mult = 1.0 + float(level) * 0.4
+	max_health *= WorldTime.diff_mult + float(level) * 0.8
+	damage_mult = WorldTime.diff_mult + float(level) * 0.4
+	print(max_health)
+	print(damage_mult)
+	print(WorldTime.diff_mult)
 
 func set_health(nv):
 	var d : float = health - nv
@@ -20,7 +23,7 @@ func set_health(nv):
 	hp_bar.show()
 	var dn = DAMAGE_NUM.instantiate()
 	dn.damage = d
-	get_parent().add_child(dn)
+	get_parent().add_child.call_deferred(dn)
 	dn.global_position = global_position + Vector2(randf_range(-16, 16), hp_bar.position.y - 8 + randf_range(-8, 8))
 
 func die(attacker : Entity, damage : float, proc : float):

@@ -1,0 +1,54 @@
+[gd_scene load_steps=12 format=3 uid="uid://cix7wk7sys5v5"]
+
+[ext_resource type="Script" uid="uid://b7u5pmq7s2" path="res://Rooms/room.gd" id="1_35jrq"]
+[ext_resource type="Script" uid="uid://cklbnqu5s3ip8" path="res://Objects/structure_res.gd" id="2_jusji"]
+[ext_resource type="PackedScene" uid="uid://bgolipxu0oc7s" path="res://Shrines/bloodshrine.tscn" id="3_mxgf7"]
+[ext_resource type="PackedScene" uid="uid://c81vy0uvaq2ku" path="res://Shrines/combatshrine.tscn" id="4_dus22"]
+[ext_resource type="PackedScene" uid="uid://bn1l4bj2ot0x6" path="res://Shrines/luckshrine.tscn" id="5_n0n61"]
+[ext_resource type="PackedScene" uid="uid://bxd73wsp5ng17" path="res://Shrines/superiorbloodshrine.tscn" id="6_ty0xk"]
+[ext_resource type="Texture2D" uid="uid://ds6pmqywnyb8f" path="res://Art/Rooms/Stratum4/stars_2.png" id="7_35jrq"]
+
+[sub_resource type="Resource" id="Resource_lvf57"]
+script = ExtResource("2_jusji")
+weight = 5
+struct = ExtResource("3_mxgf7")
+metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
+
+[sub_resource type="Resource" id="Resource_i7vns"]
+script = ExtResource("2_jusji")
+weight = 4
+struct = ExtResource("4_dus22")
+metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
+
+[sub_resource type="Resource" id="Resource_guw1q"]
+script = ExtResource("2_jusji")
+weight = 3
+struct = ExtResource("5_n0n61")
+metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
+
+[sub_resource type="Resource" id="Resource_ateiv"]
+script = ExtResource("2_jusji")
+weight = 2
+struct = ExtResource("6_ty0xk")
+metadata/_custom_type_script = "uid://cklbnqu5s3ip8"
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_35jrq")
+structures = Array[ExtResource("2_jusji")]([SubResource("Resource_lvf57"), SubResource("Resource_i7vns"), SubResource("Resource_guw1q"), SubResource("Resource_ateiv")])
+struct_spawn_ratio = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("7_35jrq")
+
+[node name="GenerationPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(0, 2912)
+
+[node name="Marker2D2" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(130, 2912)
+
+[node name="Marker2D3" type="Marker2D" parent="GenerationPoints"]
+position = Vector2(-164, 2912)
+
+[node name="Ground" type="Node2D" parent="."]

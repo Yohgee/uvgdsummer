@@ -32,6 +32,7 @@ var spawn_credits : int = 30
 var wave_timer : Timer
 @export var max_wave_time : float = 30
 @export var min_wave_time : float = 15
+@export var spawn_enemies : bool = true
 
 func _ready() -> void:
 	name_label.text = "Stratum " + str(level) + ": " + level_name
@@ -63,7 +64,8 @@ func _ready() -> void:
 	
 	wave_timer = Timer.new()
 	add_child(wave_timer)
-	wave_timer.start(randf_range(min_wave_time/2, max_wave_time/2))
+	if spawn_enemies:
+		wave_timer.start(randf_range(min_wave_time/2, max_wave_time/2))
 	wave_timer.timeout.connect(spawn_wave)
 	spawn_credits += world.level * 10
 	animation_player.play("name_fade")
@@ -72,8 +74,11 @@ func spawn_wave():
 	wave_timer.stop()
 	var ms : int = sun_credits.min()
 	var mm : int = moon_credits.min()
-	
+	var i : int = 0
 	while (spawn_credits >= ms and WorldTime.get_sun()) or (spawn_credits >= mm and WorldTime.get_moon()):
+		if i >= 100:
+			break
+		i += 1
 		var sunspawn : int = randi_range(0, sun_enemies.size()-1)
 		if spawn_credits >= sun_credits[sunspawn] and WorldTime.get_sun():
 			spawn_enemy(sun_enemies[sunspawn])

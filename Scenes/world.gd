@@ -14,7 +14,7 @@ func change_stratum():
 	if stratum:
 		stratum.queue_free()
 	player.position = Vector2.ZERO
-	stratum = strata[wrapi(level, 0, 5)].instantiate()
+	stratum = strata[wrapi(level, 0, 6)].instantiate()
 	stratum.world = self
 	add_child(stratum)
 
@@ -23,6 +23,8 @@ func _process(delta: float) -> void:
 		WorldTime.add_time(delta)
 	else:
 		WorldTime.add_time(delta * 2)
+	if Input.is_action_just_pressed("test"):
+		next_level()
 
 func next_level():
 	for c in get_children():
@@ -36,3 +38,9 @@ func next_level():
 	change_stratum()
 	animation_player.play("level_fade_out")
 	
+
+
+func _on_player_on_death(attacker: Entity, target: Entity, damage: float, proc: float) -> void:
+	animation_player.play("level_fade")
+	await animation_player.animation_finished
+	get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")

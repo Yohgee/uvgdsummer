@@ -33,6 +33,7 @@ func _ready() -> void:
 	timer.timeout.connect(shoot)
 	if start_delay > 0:
 		await get_tree().create_timer(start_delay).timeout
+		shoot()
 	timer.start()
 
 func _physics_process(delta: float) -> void:

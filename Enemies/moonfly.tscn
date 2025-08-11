@@ -29,7 +29,7 @@ script = ExtResource("1_6a325")
 hp_bar = NodePath("HealthBar")
 statuses = NodePath("HBoxContainer")
 base_speed = 150
-max_health = 50
+max_health = 80
 metadata/_custom_type_script = "uid://pfrh7u2ltx2"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

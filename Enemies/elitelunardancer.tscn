@@ -1,0 +1,147 @@
+[gd_scene load_steps=23 format=3 uid="uid://d3ykdcbp4em7f"]
+
+[ext_resource type="Script" uid="uid://pg04uubvmxy6" path="res://enemy.gd" id="1_so8w7"]
+[ext_resource type="Texture2D" uid="uid://cvsv0qgibeydy" path="res://Art/Enemies/elitemoondancer.png" id="2_so8w7"]
+[ext_resource type="Texture2D" uid="uid://bcwbsln0qvyne" path="res://Art/enemybarund.png" id="3_u6db6"]
+[ext_resource type="Texture2D" uid="uid://dttl0hhgdt5gc" path="res://Art/enemybarprog.png" id="4_o4kme"]
+[ext_resource type="Script" uid="uid://cwmq5xi11tvhm" path="res://Enemies/fly_movement.gd" id="5_pudby"]
+[ext_resource type="PackedScene" uid="uid://bpryymutquy6e" path="res://Shooters/shooter.tscn" id="6_tr0yg"]
+[ext_resource type="PackedScene" uid="uid://b8853ea50yk1d" path="res://Shooters/bigmoonbullet.tscn" id="7_02jgy"]
+[ext_resource type="Script" uid="uid://dffyrkj5y36t5" path="res://Shooters/bullet_res.gd" id="8_8i73y"]
+[ext_resource type="Script" uid="uid://g2i0cj1tysju" path="res://Shooters/spread_shooter.gd" id="9_c8j00"]
+[ext_resource type="Script" uid="uid://b8qwh4iduupyl" path="res://Shooters/shooter_res.gd" id="10_o4kme"]
+[ext_resource type="PackedScene" uid="uid://c5ikuems7oqdn" path="res://Objects/bullet.tscn" id="10_u6db6"]
+[ext_resource type="Script" uid="uid://c0s05wxd5ynwn" path="res://Objects/drop_item.gd" id="12_0rnyl"]
+[ext_resource type="Script" uid="uid://dlbgqgtalmu1i" path="res://Items/item_pool.gd" id="13_8mbbr"]
+[ext_resource type="Resource" uid="uid://fq4ye61425ly" path="res://Items/CommonItems.tres" id="14_o0vud"]
+[ext_resource type="Resource" uid="uid://dyc20xinl05nf" path="res://Items/UnCommonItems.tres" id="15_1yj3d"]
+[ext_resource type="Script" uid="uid://crjy1ln2kvdwa" path="res://Items/pool_set.gd" id="16_3nvmn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i084g"]
+size = Vector2(32, 32)
+
+[sub_resource type="Resource" id="Resource_so8w7"]
+script = ExtResource("8_8i73y")
+damage = 20.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(150, 0)
+acceleration = Vector2(350, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_0rnyl"]
+script = ExtResource("8_8i73y")
+damage = 10.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(0, 0)
+acceleration = Vector2(0, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_8mbbr"]
+script = ExtResource("8_8i73y")
+damage = 10.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(200, -320)
+acceleration = Vector2(0, -300)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_pudby"]
+script = ExtResource("10_o4kme")
+spawn_node = ExtResource("10_u6db6")
+spawn_res = SubResource("Resource_8mbbr")
+start_delay = 0.8
+spawn_delay = 0.1
+velocity = Vector2(200, 0)
+acceleration = Vector2(0, 400)
+fix_accel = false
+offset = Vector2(0, 0)
+aimed = false
+num_shots = 1
+carry_node = ExtResource("10_u6db6")
+carry_res = SubResource("Resource_0rnyl")
+metadata/_custom_type_script = "uid://b8qwh4iduupyl"
+
+[sub_resource type="Resource" id="Resource_ydnaw"]
+script = ExtResource("16_3nvmn")
+pools = Array[ExtResource("13_8mbbr")]([ExtResource("14_o0vud"), ExtResource("15_1yj3d")])
+chances = Array[float]([0.15, 0.05])
+metadata/_custom_type_script = "uid://crjy1ln2kvdwa"
+
+[node name="LunarDancer" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "di", "statuses")]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_so8w7")
+hp_bar = NodePath("HealthBar")
+di = NodePath("DropItem")
+statuses = NodePath("HBoxContainer")
+base_speed = 150
+max_health = 110
+metadata/_custom_type_script = "uid://pfrh7u2ltx2"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_so8w7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i084g")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("3_u6db6")
+texture_progress = ExtResource("4_o4kme")
+
+[node name="FlyMovement" type="Node2D" parent="." node_paths=PackedStringArray("entity", "shooters", "spr")]
+script = ExtResource("5_pudby")
+entity = NodePath("..")
+shooters = [NodePath("Shooter"), NodePath("SpreadShooter")]
+range = 350.0
+sin_ratio = 0.9
+spr = NodePath("../Sprite2D")
+
+[node name="Shooter" parent="FlyMovement" node_paths=PackedStringArray("shooter") instance=ExtResource("6_tr0yg")]
+spawn_node = ExtResource("7_02jgy")
+spawn_res = SubResource("Resource_so8w7")
+shooter = NodePath("../..")
+start_delay = 0.1
+spawn_delay = 1.0
+aimed = true
+
+[node name="SpreadShooter" type="Node2D" parent="FlyMovement" node_paths=PackedStringArray("shooter")]
+script = ExtResource("9_c8j00")
+spread_angle = 360.0
+spawn_num = 8
+spawn_node = ExtResource("6_tr0yg")
+spawn_res = SubResource("Resource_pudby")
+shooter = NodePath("../..")
+start_delay = 0.1
+spawn_delay = 4.0
+metadata/_custom_type_script = "uid://g2i0cj1tysju"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -8.0
+offset_top = -35.0
+offset_right = 8.0
+offset_bottom = -25.0
+
+[node name="DropItem" type="Node2D" parent="."]
+script = ExtResource("12_0rnyl")
+pool_set = SubResource("Resource_ydnaw")
+metadata/_custom_type_script = "uid://c0s05wxd5ynwn"

@@ -1,0 +1,179 @@
+[gd_scene load_steps=7 format=3 uid="uid://dveiis36avn1f"]
+
+[ext_resource type="Script" uid="uid://balxtbt3t1din" path="res://Scenes/title_screen.gd" id="1_klylv"]
+[ext_resource type="AudioStream" uid="uid://bsus46kturq8t" path="res://Art/click.wav" id="2_p3fck"]
+[ext_resource type="Texture2D" uid="uid://ljuvr1uqdssd" path="res://Art/tutorial.png" id="3_4gxqj"]
+[ext_resource type="Texture2D" uid="uid://bews1y68odhps" path="res://Art/PXL_20250810_003051900.jpg" id="4_twnyg"]
+[ext_resource type="Texture2D" uid="uid://fm6lowqixpn" path="res://Art/Screenshot_20250809-175205.png" id="5_55kwv"]
+[ext_resource type="Texture2D" uid="uid://c7bb5ey8ke8qa" path="res://Art/titlescreenthing.png" id="6_12m1t"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_klylv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.1
+anchor_bottom = 0.1
+offset_right = 445.0
+offset_bottom = 259.0
+theme_override_font_sizes/font_size = 128
+text = "Eclipse 
+         Spire"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.45
+anchor_right = 0.45
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="playButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "PLAY"
+flat = true
+
+[node name="Tutorial" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "TUTORIAL"
+flat = true
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Difficulty:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Easy" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "EASY"
+flat = true
+
+[node name="Medium" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "MEDIUM"
+flat = true
+
+[node name="HARD" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "HARD"
+flat = true
+
+[node name="credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "CREDITS"
+flat = true
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Volume:"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = -20.0
+max_value = 20.0
+value = -10.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_p3fck")
+
+[node name="Tutorial" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(952, 443)
+scale = Vector2(4, 4)
+texture = ExtResource("3_4gxqj")
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Creds" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.15
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "A Game by ELi
+
+With music by Matthew Ritonja
+
+Special Thanks to Jacob for sitting in call with me while I made this and giving me some ideas.
+
+Extra Special Thanks to Carter for letting me work at his house while my power was out."
+autowrap_mode = 2
+
+[node name="Pxl20250810003051900" type="Sprite2D" parent="Creds"]
+position = Vector2(447, 436)
+scale = Vector2(0.0772829, 0.0772829)
+texture = ExtResource("4_twnyg")
+
+[node name="Screenshot20250809-175205" type="Sprite2D" parent="Creds"]
+position = Vector2(165, 469)
+scale = Vector2(0.334855, 0.334855)
+texture = ExtResource("5_55kwv")
+region_enabled = true
+region_rect = Rect2(0, 900, 900, 900)
+
+[node name="ColorRect" type="ColorRect" parent="Creds"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Titlescreenthing" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(1003, 369)
+scale = Vector2(4, 4)
+texture = ExtResource("6_12m1t")
+
+[connection signal="pressed" from="VBoxContainer/playButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Easy" to="." method="_on_easy_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Medium" to="." method="_on_medium_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HARD" to="." method="_on_hard_pressed"]
+[connection signal="pressed" from="VBoxContainer/credits" to="." method="_on_credits_pressed"]
+[connection signal="value_changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

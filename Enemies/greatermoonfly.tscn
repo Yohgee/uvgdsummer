@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://dffyrkj5y36t5"
 
 [sub_resource type="Resource" id="Resource_4pjc8"]
 script = ExtResource("8_vccpv")
-damage = 5.0
+damage = 10.0
 proc = 1.0
 lifetime = 10.0
 velocity = Vector2(150, 0)
@@ -68,7 +68,7 @@ script = ExtResource("1_ko8xe")
 hp_bar = NodePath("HealthBar")
 di = NodePath("DropItem")
 statuses = NodePath("HBoxContainer")
-max_health = 50
+max_health = 120
 metadata/_custom_type_script = "uid://pfrh7u2ltx2"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

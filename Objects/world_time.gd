@@ -6,6 +6,12 @@ var time : float = 0
 var sun : bool = true
 var moon : bool = false
 var eclipse : bool = false
+var diff_mult : float = 1.0
+
+var damage_dealt : float = 0
+var damage_taken : float = 0
+var items_collected : int = 0
+var enemies_killed : int = 0
 
 func get_sun() -> bool:
 	return sun or eclipse

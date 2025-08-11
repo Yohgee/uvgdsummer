@@ -16,6 +16,8 @@ signal on_block(blocker : Entity)
 @onready var item_display: ItemDisplay = $player_ui_layer/ui/ItemDisplay
 @onready var nightwand_spr: Sprite2D = $nightwand
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var shoot: AudioStreamPlayer = $Shoot
+@onready var block: AudioStreamPlayer = $Block
 
 @export var max_flight := 1.5:
 	set(nv):
@@ -44,7 +46,7 @@ var charge = 100:
 var charge_gain := 5
 var gravity = 980
 var flight_speed : float = 125
-var flight_recharge_mult := 2
+var flight_recharge_mult := 4
 var base_attack_speed : float = 0.3
 var attack_speed_mult : float = 1.0:
 	set(nv):
@@ -84,16 +86,19 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_pressed("primary"):
 		if WorldTime.get_sun() and can_attack:
+			shoot.play()
 			can_attack = false
 			wand_spr.show()
 			attack_timer.start()
 			spawn_bullet(PLAYER_BULLET)
 		if WorldTime.get_moon() and can_attack_night:
+			shoot.play()
 			can_attack_night = false
 			nightwand_spr.show()
 			night_attack_timer.start()
 			spawn_bullet(PLAYER_NIGHT_BULLET)
 	if Input.is_action_just_pressed("block") and charge >= 100:
+		block.play()
 		charge -= 100
 		flight = max_flight
 		animation_player.play("block")
@@ -103,6 +108,7 @@ func _physics_process(delta: float) -> void:
 func get_item(i : Item):
 	i = super.get_item(i)
 	if !i.status_effect:
+		WorldTime.items_collected += 1
 		item_display.add_item_to_q(i)
 		for c : ItemContainerUI in grid_container.get_children():
 			if c.i.name == i.name:
@@ -145,12 +151,14 @@ func _on_attack_timer_timeout() -> void:
 func get_kill(target : Entity, damage : float, proc : float):
 	super.get_kill(target, damage, proc)
 	charge += charge_gain
+	WorldTime.enemies_killed += 1
 
 func _on_night_attack_timer_timeout() -> void:
 	can_attack_night = true
 	nightwand_spr.hide()
 
 func die(attacker : Entity, damage : float, proc : float):
+	if dead: return
 	on_death.emit(attacker, self, damage, proc)
 	var dp = DEATHPARTICLES.instantiate()
 	get_tree().current_scene.add_child(dp)
@@ -169,3 +177,11 @@ func update_status_effects(i : Item, g : bool):
 	var nc := STATUS_TEXTURE.instantiate()
 	nc.i = i
 	ui.status_effects.add_child(nc)
+
+func get_hit(target : Entity, damage : float, proc : float):
+	super.get_hit(target, damage, proc)
+	WorldTime.damage_dealt += damage
+
+func take_damage(attacker : Entity, damage : float, proc : float):
+	super.take_damage(attacker, damage, proc)
+	WorldTime.damage_taken += damage

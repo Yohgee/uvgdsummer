@@ -1,0 +1,292 @@
+[gd_scene load_steps=30 format=3 uid="uid://bol5ufmt7goql"]
+
+[ext_resource type="Script" uid="uid://62luhk6dbsmn" path="res://Enemies/boss_phase.gd" id="1_7tc63"]
+[ext_resource type="Script" uid="uid://g2i0cj1tysju" path="res://Shooters/spread_shooter.gd" id="2_uwp85"]
+[ext_resource type="PackedScene" uid="uid://c5ikuems7oqdn" path="res://Objects/bullet.tscn" id="4_sfenq"]
+[ext_resource type="Script" uid="uid://dffyrkj5y36t5" path="res://Shooters/bullet_res.gd" id="5_k3flv"]
+[ext_resource type="PackedScene" uid="uid://bpryymutquy6e" path="res://Shooters/shooter.tscn" id="6_052oe"]
+[ext_resource type="Script" uid="uid://b8qwh4iduupyl" path="res://Shooters/shooter_res.gd" id="7_eh1m1"]
+[ext_resource type="PackedScene" uid="uid://diih5887duw76" path="res://Shooters/sunbullet.tscn" id="7_vll4s"]
+[ext_resource type="Script" uid="uid://d4ngtdediwo85" path="res://Shooters/shooter.gd" id="8_2ygr5"]
+[ext_resource type="PackedScene" uid="uid://vw35bjfj8jvw" path="res://Shooters/spiral_shooter.tscn" id="11_7tc63"]
+[ext_resource type="PackedScene" uid="uid://jermn5el3ebk" path="res://Shooters/fallingsunspear.tscn" id="11_n6r75"]
+[ext_resource type="PackedScene" uid="uid://b8853ea50yk1d" path="res://Shooters/bigmoonbullet.tscn" id="12_ckhgl"]
+[ext_resource type="Script" uid="uid://dpdt6ppa2hdxk" path="res://Shooters/spiral_shooter_res.gd" id="12_uwp85"]
+
+[sub_resource type="Resource" id="Resource_fp8cd"]
+script = ExtResource("5_k3flv")
+damage = 20.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(150, 0)
+acceleration = Vector2(0, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_4diym"]
+script = ExtResource("5_k3flv")
+damage = 10.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(400, 0)
+acceleration = Vector2(0, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_loitf"]
+script = ExtResource("7_eh1m1")
+spawn_node = ExtResource("11_n6r75")
+spawn_res = SubResource("Resource_4diym")
+start_delay = 0.1
+spawn_delay = 0.1
+velocity = Vector2(0, 0)
+acceleration = Vector2(0, 0)
+fix_accel = false
+offset = Vector2(0, 0)
+aimed = true
+num_shots = 8
+metadata/_custom_type_script = "uid://b8qwh4iduupyl"
+
+[sub_resource type="Resource" id="Resource_ji5vp"]
+script = ExtResource("5_k3flv")
+damage = 10.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(0, 0)
+acceleration = Vector2(0, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_eh1m1"]
+script = ExtResource("5_k3flv")
+damage = 10.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(0, 0)
+acceleration = Vector2(0, 450)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_7tc63"]
+script = ExtResource("7_eh1m1")
+spawn_node = ExtResource("7_vll4s")
+spawn_res = SubResource("Resource_eh1m1")
+start_delay = 0.0
+spawn_delay = 0.25
+velocity = Vector2(400, 0)
+acceleration = Vector2(0, 350)
+fix_accel = true
+offset = Vector2(0, 0)
+aimed = false
+num_shots = -1
+carry_node = ExtResource("7_vll4s")
+carry_res = SubResource("Resource_ji5vp")
+metadata/_custom_type_script = "uid://b8qwh4iduupyl"
+
+[sub_resource type="Resource" id="Resource_o4kme"]
+script = ExtResource("5_k3flv")
+damage = 10.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(0, 0)
+acceleration = Vector2(0, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_uwp85"]
+script = ExtResource("5_k3flv")
+damage = 10.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(200, -120)
+acceleration = Vector2(0, -200)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_iqcld"]
+script = ExtResource("7_eh1m1")
+spawn_node = ExtResource("4_sfenq")
+spawn_res = SubResource("Resource_uwp85")
+start_delay = 0.3
+spawn_delay = 0.5
+velocity = Vector2(100, 0)
+acceleration = Vector2(0, 200)
+fix_accel = false
+offset = Vector2(0, 0)
+aimed = false
+num_shots = 3
+carry_node = ExtResource("4_sfenq")
+carry_res = SubResource("Resource_o4kme")
+metadata/_custom_type_script = "uid://b8qwh4iduupyl"
+
+[sub_resource type="Resource" id="Resource_73gqj"]
+script = ExtResource("5_k3flv")
+damage = 10.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(0, 0)
+acceleration = Vector2(0, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_k3flv"]
+script = ExtResource("5_k3flv")
+damage = 10.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(300, 0)
+acceleration = Vector2(0, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_sfenq"]
+script = ExtResource("12_uwp85")
+rot_per_shot = 15.0
+spawn_node = ExtResource("11_n6r75")
+spawn_res = SubResource("Resource_k3flv")
+start_delay = 0.2
+spawn_delay = 0.02
+velocity = Vector2(300, 0)
+acceleration = Vector2(0, 0)
+fix_accel = false
+offset = Vector2(0, 0)
+aimed = false
+num_shots = 48
+carry_node = ExtResource("7_vll4s")
+carry_res = SubResource("Resource_73gqj")
+metadata/_custom_type_script = "uid://dpdt6ppa2hdxk"
+
+[sub_resource type="Resource" id="Resource_yhskb"]
+script = ExtResource("5_k3flv")
+damage = 20.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(0, 0)
+acceleration = Vector2(0, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_n6r75"]
+script = ExtResource("5_k3flv")
+damage = 5.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(0, 0)
+acceleration = Vector2(0, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_2ygr5"]
+script = ExtResource("5_k3flv")
+damage = 5.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(300, 0)
+acceleration = Vector2(0, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_3dj2w"]
+script = ExtResource("7_eh1m1")
+spawn_node = ExtResource("7_vll4s")
+spawn_res = SubResource("Resource_2ygr5")
+start_delay = 0.0
+spawn_delay = 0.8
+velocity = Vector2(0, 0)
+acceleration = Vector2(0, 0)
+fix_accel = false
+offset = Vector2(0, 0)
+aimed = true
+num_shots = 1
+carry_node = ExtResource("7_vll4s")
+carry_res = SubResource("Resource_n6r75")
+metadata/_custom_type_script = "uid://b8qwh4iduupyl"
+
+[sub_resource type="Resource" id="Resource_vll4s"]
+script = ExtResource("7_eh1m1")
+spawn_node = ExtResource("6_052oe")
+spawn_res = SubResource("Resource_3dj2w")
+start_delay = 0.8
+spawn_delay = 0.6
+velocity = Vector2(200, 0)
+acceleration = Vector2(0, 0)
+fix_accel = false
+offset = Vector2(0, 0)
+aimed = false
+num_shots = -1
+carry_node = ExtResource("11_n6r75")
+carry_res = SubResource("Resource_yhskb")
+metadata/_custom_type_script = "uid://b8qwh4iduupyl"
+
+[node name="Phase2" type="Node2D"]
+script = ExtResource("1_7tc63")
+
+[node name="SpreadShooter" type="Node2D" parent="."]
+script = ExtResource("2_uwp85")
+spread_angle = 360.0
+spawn_num = 24
+spawn_node = ExtResource("12_ckhgl")
+spawn_res = SubResource("Resource_fp8cd")
+start_delay = 1.0
+spawn_delay = 2.0
+metadata/_custom_type_script = "uid://g2i0cj1tysju"
+
+[node name="SpreadShooter2" type="Node2D" parent="."]
+rotation = 0.1309
+script = ExtResource("2_uwp85")
+spread_angle = 360.0
+spawn_num = 24
+spawn_node = ExtResource("12_ckhgl")
+spawn_res = SubResource("Resource_fp8cd")
+start_delay = 2.0
+spawn_delay = 2.0
+metadata/_custom_type_script = "uid://g2i0cj1tysju"
+
+[node name="Shooter" type="Node2D" parent="."]
+script = ExtResource("8_2ygr5")
+spawn_node = ExtResource("6_052oe")
+spawn_res = SubResource("Resource_loitf")
+start_delay = 1.5
+spawn_delay = 16.0
+metadata/_custom_type_script = "uid://d4ngtdediwo85"
+
+[node name="SpreadShooter3" type="Node2D" parent="."]
+rotation = -1.5708
+script = ExtResource("2_uwp85")
+spread_angle = 120.0
+spawn_num = 6
+spawn_node = ExtResource("6_052oe")
+spawn_res = SubResource("Resource_7tc63")
+start_delay = 3.0
+spawn_delay = 16.0
+fix_accel = true
+metadata/_custom_type_script = "uid://g2i0cj1tysju"
+
+[node name="SpreadShooter4" type="Node2D" parent="."]
+script = ExtResource("2_uwp85")
+spread_angle = 360.0
+spawn_num = 24
+spawn_node = ExtResource("6_052oe")
+spawn_res = SubResource("Resource_iqcld")
+start_delay = 6.0
+spawn_delay = 16.0
+metadata/_custom_type_script = "uid://g2i0cj1tysju"
+
+[node name="Shooter2" type="Node2D" parent="."]
+script = ExtResource("8_2ygr5")
+spawn_node = ExtResource("11_7tc63")
+spawn_res = SubResource("Resource_sfenq")
+start_delay = 9.0
+spawn_delay = 16.0
+aimed = true
+metadata/_custom_type_script = "uid://d4ngtdediwo85"
+
+[node name="SpreadShooter5" type="Node2D" parent="."]
+script = ExtResource("2_uwp85")
+spread_angle = 360.0
+spawn_num = 12
+spawn_node = ExtResource("6_052oe")
+spawn_res = SubResource("Resource_vll4s")
+start_delay = 11.5
+spawn_delay = 16.0
+metadata/_custom_type_script = "uid://g2i0cj1tysju"

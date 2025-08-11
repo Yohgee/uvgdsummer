@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxbryhqe4vxsg"]
+[gd_scene load_steps=3 format=3 uid="uid://dxbryhqe4vxsg"]
 
 [ext_resource type="Script" uid="uid://cvsbdos8bt2gh" path="res://Objects/damage_num.gd" id="1_f0nxx"]
+[ext_resource type="AudioStream" uid="uid://kngd1436n71a" path="res://Art/sfx/shoot.wav" id="2_ahe31"]
 
 [node name="DamageNum" type="Node2D"]
 script = ExtResource("1_f0nxx")
@@ -20,3 +21,7 @@ grow_vertical = 2
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ahe31")
+volume_db = -16.865

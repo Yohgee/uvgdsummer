@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4b81mn8us06s"]
+
+[ext_resource type="Script" uid="uid://bb0oqmwwb71wy" path="res://Enemies/finalboss.gd" id="1_mdqrn"]
+[ext_resource type="Texture2D" uid="uid://d3oo7kahdt0pv" path="res://Art/Enemies/finalboss.png" id="2_mdqrn"]
+[ext_resource type="PackedScene" uid="uid://bol5ufmt7goql" path="res://Enemies/phase_2.tscn" id="2_wifgw"]
+[ext_resource type="PackedScene" uid="uid://bdy33bbomf4rs" path="res://Enemies/phase_1.tscn" id="2_wp63h"]
+[ext_resource type="Texture2D" uid="uid://g6fi2eekmprc" path="res://Art/Enemies/bossbarund2.png" id="3_wp8ck"]
+[ext_resource type="Texture2D" uid="uid://dw4rlv1rbo832" path="res://Art/Enemies/bossbarprog2.png" id="4_wifgw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6c8jd"]
+size = Vector2(64, 64)
+
+[node name="Mithrix" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "statuses")]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_mdqrn")
+phases = Array[PackedScene]([ExtResource("2_wp63h"), ExtResource("2_wifgw")])
+hp_bar = NodePath("CanvasLayer/Control/TextureProgressBar")
+statuses = NodePath("HBoxContainer")
+max_health = 1500
+metadata/_custom_type_script = "uid://pfrh7u2ltx2"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mdqrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6c8jd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -8.0
+offset_top = -54.0
+offset_right = 8.0
+offset_bottom = -44.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.12
+anchor_right = 0.5
+anchor_bottom = 0.15
+offset_left = -192.0
+offset_top = 12.0
+offset_right = 192.0
+offset_bottom = 52.0
+grow_horizontal = 2
+max_value = 2000.0
+value = 2000.0
+texture_under = ExtResource("3_wp8ck")
+texture_progress = ExtResource("4_wifgw")

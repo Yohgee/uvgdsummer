@@ -1,0 +1,119 @@
+[gd_scene load_steps=20 format=3 uid="uid://cmh2ivwlfigbl"]
+
+[ext_resource type="Script" uid="uid://pg04uubvmxy6" path="res://enemy.gd" id="1_v85co"]
+[ext_resource type="Texture2D" uid="uid://5xv86snyrnbe" path="res://Art/Enemies/elitesunwarrior.png" id="2_v85co"]
+[ext_resource type="Texture2D" uid="uid://bcwbsln0qvyne" path="res://Art/enemybarund.png" id="3_hlrbv"]
+[ext_resource type="Texture2D" uid="uid://dttl0hhgdt5gc" path="res://Art/enemybarprog.png" id="4_2x3at"]
+[ext_resource type="Script" uid="uid://cwmq5xi11tvhm" path="res://Enemies/fly_movement.gd" id="5_7gf68"]
+[ext_resource type="PackedScene" uid="uid://bpryymutquy6e" path="res://Shooters/shooter.tscn" id="6_t12qj"]
+[ext_resource type="PackedScene" uid="uid://jermn5el3ebk" path="res://Shooters/fallingsunspear.tscn" id="7_rp0as"]
+[ext_resource type="Script" uid="uid://dffyrkj5y36t5" path="res://Shooters/bullet_res.gd" id="8_858j7"]
+[ext_resource type="PackedScene" uid="uid://bptlwpb18i373" path="res://Shooters/spread_shooter.tscn" id="9_nfmt6"]
+[ext_resource type="PackedScene" uid="uid://diih5887duw76" path="res://Shooters/sunbullet.tscn" id="10_hlrbv"]
+[ext_resource type="Script" uid="uid://c0s05wxd5ynwn" path="res://Objects/drop_item.gd" id="11_858j7"]
+[ext_resource type="Script" uid="uid://dlbgqgtalmu1i" path="res://Items/item_pool.gd" id="12_5ayek"]
+[ext_resource type="Resource" uid="uid://fq4ye61425ly" path="res://Items/CommonItems.tres" id="13_umt6a"]
+[ext_resource type="Resource" uid="uid://dyc20xinl05nf" path="res://Items/UnCommonItems.tres" id="14_dgg57"]
+[ext_resource type="Script" uid="uid://crjy1ln2kvdwa" path="res://Items/pool_set.gd" id="15_nidw5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgqpm"]
+size = Vector2(32, 32)
+
+[sub_resource type="Resource" id="Resource_hlrbv"]
+script = ExtResource("8_858j7")
+damage = 12.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(650, 0)
+acceleration = Vector2(0, 100)
+pierce = 2
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_2x3at"]
+script = ExtResource("8_858j7")
+damage = 10.0
+proc = 1.0
+lifetime = 10.0
+velocity = Vector2(-300, 0)
+acceleration = Vector2(0, 0)
+pierce = 1
+metadata/_custom_type_script = "uid://dffyrkj5y36t5"
+
+[sub_resource type="Resource" id="Resource_jgua6"]
+script = ExtResource("15_nidw5")
+pools = Array[ExtResource("12_5ayek")]([ExtResource("13_umt6a"), ExtResource("14_dgg57")])
+chances = Array[float]([0.15, 0.05])
+metadata/_custom_type_script = "uid://crjy1ln2kvdwa"
+
+[node name="eliteSunwarrior" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "di", "statuses")]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_v85co")
+hp_bar = NodePath("HealthBar")
+di = NodePath("DropItem")
+statuses = NodePath("HBoxContainer")
+base_speed = 150
+max_health = 150
+metadata/_custom_type_script = "uid://pfrh7u2ltx2"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v85co")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dgqpm")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("3_hlrbv")
+texture_progress = ExtResource("4_2x3at")
+
+[node name="FlyMovement" type="Node2D" parent="." node_paths=PackedStringArray("entity", "shooters", "spr")]
+script = ExtResource("5_7gf68")
+entity = NodePath("..")
+shooters = [NodePath("Shooter"), NodePath("SpreadShooter")]
+range_diff = 50.0
+sin_ratio = 0.3
+spr = NodePath("../Sprite2D")
+
+[node name="Shooter" parent="FlyMovement" node_paths=PackedStringArray("shooter") instance=ExtResource("6_t12qj")]
+spawn_node = ExtResource("7_rp0as")
+spawn_res = SubResource("Resource_hlrbv")
+shooter = NodePath("../..")
+start_delay = 0.1
+spawn_delay = 1.5
+fix_accel = true
+aimed = true
+
+[node name="SpreadShooter" parent="FlyMovement" node_paths=PackedStringArray("shooter") instance=ExtResource("9_nfmt6")]
+spread_angle = 360.0
+spawn_num = 8
+spawn_node = ExtResource("10_hlrbv")
+spawn_res = SubResource("Resource_2x3at")
+shooter = NodePath("../..")
+start_delay = 0.1
+spawn_delay = 3.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -8.0
+offset_top = -35.0
+offset_right = 8.0
+offset_bottom = -25.0
+
+[node name="DropItem" type="Node2D" parent="."]
+script = ExtResource("11_858j7")
+pool_set = SubResource("Resource_jgua6")
+metadata/_custom_type_script = "uid://c0s05wxd5ynwn"

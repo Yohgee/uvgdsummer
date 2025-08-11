@@ -7,6 +7,7 @@ signal hit(target : Entity, dmg : float, procc : float)
 @export var proc : float = 1.0
 @export var lifetime : float = 10
 @export var pierce : int = 1
+@export var rotate_to_vel : bool = false
 
 var velocity : Vector2 = Vector2.ZERO
 var acceleration : Vector2 = Vector2.ZERO
@@ -22,6 +23,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position += velocity * delta
 	velocity += acceleration * delta
+	if rotate_to_vel:
+		rotation = velocity.angle()
 	lifetime -= delta
 	if lifetime <= 0:
 		queue_free()

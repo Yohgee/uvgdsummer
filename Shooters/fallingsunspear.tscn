@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://jermn5el3ebk"]
+
+[ext_resource type="Script" uid="uid://dmuty65svxktj" path="res://bullet.gd" id="1_i2e1e"]
+[ext_resource type="Texture2D" uid="uid://i5rhfqoacwui" path="res://Art/solarspear.png" id="2_i2e1e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3iox"]
+size = Vector2(2, 30)
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_i2e1e")
+rotate_to_vel = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_v3iox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i2e1e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

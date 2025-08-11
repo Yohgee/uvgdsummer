@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://drt8n34fh4vp7"]
+[gd_scene load_steps=16 format=3 uid="uid://drt8n34fh4vp7"]
 
 [ext_resource type="Script" uid="uid://di24gbtq4oaw0" path="res://Shrines/shrine.gd" id="1_c6ei3"]
 [ext_resource type="Texture2D" uid="uid://h01wshxx7ovx" path="res://Art/stairs.png" id="2_7630a"]
 [ext_resource type="Script" uid="uid://ffjcyplxifpt" path="res://Shrines/stair_interact.gd" id="3_7630a"]
 [ext_resource type="Script" uid="uid://sp8eblnulxy2" path="res://Shrines/enemy_spawn_shrine.gd" id="4_7hof5"]
-[ext_resource type="PackedScene" uid="uid://b6h6g5i3us7a2" path="res://Enemies/greatermoonfly.tscn" id="5_tbr5u"]
+[ext_resource type="PackedScene" uid="uid://vylkgknsgqgp" path="res://Enemies/moonboss.tscn" id="5_s5gos"]
+[ext_resource type="PackedScene" uid="uid://doe2oyjadqf26" path="res://Enemies/sunboss.tscn" id="6_s5gos"]
 [ext_resource type="PackedScene" uid="uid://bn5eej07gt80t" path="res://Enemies/moonfly.tscn" id="6_wg78d"]
+[ext_resource type="PackedScene" uid="uid://c6dwqnkb6x0bx" path="res://Enemies/sunbat.tscn" id="7_ewbe2"]
 [ext_resource type="Script" uid="uid://c0s05wxd5ynwn" path="res://Objects/drop_item.gd" id="7_sfrdu"]
 [ext_resource type="Script" uid="uid://dlbgqgtalmu1i" path="res://Items/item_pool.gd" id="8_s5gos"]
 [ext_resource type="Resource" uid="uid://dyc20xinl05nf" path="res://Items/UnCommonItems.tres" id="9_ewbe2"]
@@ -77,12 +79,12 @@ horizontal_alignment = 1
 
 [node name="EnemySpawnShrine" type="Node2D" parent="StairInteract"]
 script = ExtResource("4_7hof5")
-main_enemy = Array[PackedScene]([ExtResource("5_tbr5u")])
-adds = Array[PackedScene]([ExtResource("6_wg78d")])
+main_enemy = Array[PackedScene]([ExtResource("5_s5gos"), ExtResource("6_s5gos")])
+adds = Array[PackedScene]([ExtResource("7_ewbe2"), ExtResource("6_wg78d")])
 spawn_radius = 350
 radius_var = 50
-min_add = 4
-max_add = 7
+min_add = 0
+max_add = 1
 metadata/_custom_type_script = "uid://sp8eblnulxy2"
 
 [node name="DropItem" type="Node2D" parent="StairInteract"]
