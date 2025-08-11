@@ -83,7 +83,8 @@ func get_hit(target : Entity, damage : float, proc : float):
 
 func take_damage(attacker : Entity, damage : float, proc : float):
 	health -= damage
-	on_damage.emit(attacker, self, damage, proc)
+	if health > 0:
+		on_damage.emit(attacker, self, damage, proc)
 	if health <= 0:
 		if attacker:
 			attacker.get_kill(self, damage, proc)
