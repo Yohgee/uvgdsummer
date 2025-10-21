@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cuvpnywj3k8dn"]
+[gd_scene load_steps=17 format=3 uid="uid://cuvpnywj3k8dn"]
 
 [ext_resource type="Script" uid="uid://dorx0jiwc6g7d" path="res://Scenes/world.gd" id="1_8j60k"]
 [ext_resource type="PackedScene" uid="uid://v57cfg0brij1" path="res://Objects/player.tscn" id="1_a02cp"]
@@ -12,8 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://h0aefh015aao" path="res://Scenes/stratum5.tscn" id="7_e0ngr"]
 [ext_resource type="Texture2D" uid="uid://bfy5wnagg6t6s" path="res://Art/moonspr.png" id="7_o06y3"]
 [ext_resource type="Texture2D" uid="uid://dprcu238j8yv0" path="res://Art/timedia2l.png" id="8_k7acu"]
-[ext_resource type="PackedScene" uid="uid://c7qtfdvmlrmra" path="res://Objects/dropped_item.tscn" id="13_e0ngr"]
-[ext_resource type="Resource" uid="uid://5u3a02s82c6a" path="res://Items/actual_items/MoonShield.tres" id="14_kn0ld"]
 
 [sub_resource type="Animation" id="Animation_0fj1v"]
 length = 0.001
@@ -141,9 +139,5 @@ color = Color(0, 0, 0, 1)
 libraries = {
 &"": SubResource("AnimationLibrary_ikia7")
 }
-
-[node name="DroppedItem" parent="." instance=ExtResource("13_e0ngr")]
-position = Vector2(303, -151)
-item = ExtResource("14_kn0ld")
 
 [connection signal="on_death" from="Player" to="." method="_on_player_on_death"]
